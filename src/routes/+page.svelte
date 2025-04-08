@@ -1,0 +1,1182 @@
+<script>
+import { onMount } from 'svelte';
+import { fade, fly, slide } from 'svelte/transition';
+import '../app.css'
+
+// Navigation items
+const navItems = [
+    { label: 'Home', href: '#home' },
+    { label: 'Skills', href: '#skills' },
+    { label: 'Projects', href: '#projects' },
+    { label: 'Experience', href: '#experience' },
+    { label: 'Blog', href: '#blog' },
+    { label: 'Contact', href: '#contact' }
+];
+
+// Skills data
+const skills = [
+    {
+    name: 'Django',
+    icon: 'django.svg',
+    description: "Building robust web applications with Python's most popular framework",
+    level: 90
+    },
+    {
+    name: 'Langchain',
+    icon: 'langchain.svg',
+    description: 'Creating powerful AI applications with LLM chains and agents',
+    level: 85
+    },
+    {
+    name: 'SpringBoot',
+    icon: 'spring.svg',
+    description: "Developing enterprise-grade applications with Java's leading framework",
+    level: 80
+    },
+    {
+    name: 'Deep Learning',
+    icon: 'deep-learning.svg',
+    description: 'Implementing neural networks for complex problem solving',
+    level: 75
+    }
+];
+
+// Projects data
+const projects = [
+    {
+    title: 'Project 1',
+    description: 'A Langchain application that processes, analyzes, and extracts insights from legal documents using LLMs.',
+    technologies: ['Python', 'Langchain', 'OpenAI', 'FastAPI'],
+    image: '/placeholder.svg?height=300&width=500',
+    link: '#'
+    },
+    {
+    title: 'Project 2',
+    description: 'A full-featured e-commerce solution with inventory management, payment processing, and analytics.',
+    technologies: ['Django', 'PostgreSQL', 'Redis', 'Celery'],
+    image: '/placeholder.svg?height=300&width=500',
+    link: '#'
+    },
+    {
+    title: 'Project 3',
+    description: 'A modular ERP system for manufacturing companies with real-time reporting and analytics.',
+    technologies: ['SpringBoot', 'Java', 'MySQL', 'React'],
+    image: '/placeholder.svg?height=300&width=500',
+    link: '#'
+    },
+    {
+    title: 'Project 4',
+    description: 'A deep learning solution that identifies defects in manufacturing processes using computer vision.',
+    technologies: ['Python', 'TensorFlow', 'OpenCV', 'Flask'],
+    image: '/placeholder.svg?height=300&width=500',
+    link: '#'
+    }
+];
+
+// Experience data
+const experiences = [
+    {
+    company: 'IIT Bombay',
+    position: 'Backend Developer Intern',
+    period: 'October 2021 - Present',
+    description: 'Leading the development of enterprise-grade applications using SpringBoot and microservices architecture. Implemented CI/CD pipelines and mentored junior developers.'
+    }
+];
+
+// Blog posts data
+const blogPosts = [
+    {
+    title: 'Building Robust APIs with Django REST Framework',
+    excerpt: 'Learn how to create scalable and secure APIs using Django REST Framework with best practices for authentication and performance.',
+    date: 'April 2, 2025',
+    image: '/placeholder.svg?height=200&width=300',
+    link: '/blog/django-rest-framework'
+    },
+    {
+    title: 'Getting Started with Langchain for Document Processing',
+    excerpt: 'A comprehensive guide to using Langchain for document analysis, extraction, and summarization with practical examples.',
+    date: 'March 15, 2025',
+    image: '/placeholder.svg?height=200&width=300',
+    link: '/blog/langchain-document-processing'
+    },
+    {
+    title: 'Microservices Architecture with SpringBoot',
+    excerpt: 'Explore the benefits and challenges of implementing microservices using SpringBoot and how to overcome common pitfalls.',
+    date: 'February 28, 2025',
+    image: '/placeholder.svg?height=200&width=300',
+    link: '/blog/springboot-microservices'
+    }
+];
+
+// Mobile menu state
+let mobileMenuOpen = false;
+
+// Form data
+let name = '';
+let email = '';
+let message = '';
+let formSubmitted = false;
+let formError = false;
+
+// Theme toggle
+let darkMode = false;
+
+onMount(() => {
+    // Check system preference for dark mode
+    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    darkMode = true;
+    document.documentElement.classList.add('dark');
+    }
+
+    // Initialize intersection observer for animations
+    const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+        activeSection = entry.target.id;
+        entry.target.classList.add('in-view');
+        }
+    });
+    }, { threshold: 0.2 });
+
+    sections = document.querySelectorAll('section');
+    sections.forEach(section => observer.observe(section));
+
+    return () => {
+    sections.forEach(section => observer.unobserve(section));
+    };
+});
+
+// Handle form submission
+const handleSubmit = () => {
+    if (name && email && message) {
+    console.log({ name, email, message });
+    formSubmitted = true;
+    formError = false;
+    name = '';
+    email = '';
+    message = '';
+    } else {
+    formError = true;
+    }
+};
+
+// Toggle dark mode
+const toggleDarkMode = () => {
+    darkMode = !darkMode;
+    if (darkMode) {
+    document.documentElement.classList.add('dark');
+    } else {
+    document.documentElement.classList.remove('dark');
+    }
+};
+
+// Intersection Observer for animations
+let sections = [];
+let activeSection = 'home';
+</script>
+
+<svelte:head>
+  <title>Om Aryan</title>
+  <meta name="description" content="Portfolio of Om Aryan, a backend developer specializing in Django, Langchain, SpringBoot, and deep learning." />
+  <meta name="keywords" content="backend developer, Django, Langchain, SpringBoot, deep learning, portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+</svelte:head>
+
+<div class="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-950 text-gray-900 dark:text-gray-100 min-h-screen font-sans transition-colors duration-300">
+    <!-- Background decorative elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+      <div class="absolute top-0 left-0 w-full h-full opacity-30 dark:opacity-10">
+        <div class="absolute top-20 left-10 w-64 h-64 rounded-full bg-primary/10 blur-3xl"></div>
+        <div class="absolute bottom-20 right-10 w-80 h-80 rounded-full bg-emerald-500/10 blur-3xl"></div>
+        <div class="absolute top-1/3 right-1/4 w-72 h-72 rounded-full bg-amber-500/10 blur-3xl"></div>
+      </div>
+    </div>
+  
+    <!-- Header -->
+    <header class="fixed w-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-sm z-50 transition-all duration-300">
+      <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+        <a href="#home" class="text-2xl font-mono font-bold text-primary dark:text-primary-foreground relative group flex items-center">
+          <img src="/favicon.png" alt="Logo" class="w-8 h-8 mr-2" />
+          <!-- <span class="absolute bottom-0 left-0 w-full h-3 bg-primary/10 dark:bg-primary/20 rounded-lg -z-0 group-hover:h-4 transition-all duration-300"></span>-->
+        </a>
+        
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex space-x-8">
+          {#each navItems as item}
+            <a 
+              href={item.href} 
+              class="text-gray-700 dark:text-gray-300 hover:text-primary dark:hover:text-primary-foreground transition-colors duration-200 relative py-2 {activeSection === item.href.substring(1) ? 'text-primary dark:text-primary-foreground font-medium' : ''}"
+            >
+              {item.label}
+              {#if activeSection === item.href.substring(1)}
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-primary dark:bg-primary-foreground rounded-full"></span>
+              {/if}
+            </a>
+          {/each}
+        </nav>
+        
+        <!-- Theme toggle and mobile menu -->
+        <div class="flex items-center gap-4">
+          
+          <button 
+            class="md:hidden w-10 h-10 rounded-full bg-gray-100 dark:bg-gray-800 flex items-center justify-center hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary" 
+            on:click={() => mobileMenuOpen = !mobileMenuOpen}
+            aria-label="Toggle menu"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d={mobileMenuOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"} />
+            </svg>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Mobile Navigation -->
+      {#if mobileMenuOpen}
+        <nav 
+          class="md:hidden bg-white dark:bg-gray-900 py-4 px-4 shadow-lg"
+          transition:slide={{ duration: 200 }}
+        >
+          {#each navItems as item}
+            <a 
+              href={item.href} 
+              class="block py-3 px-4 my-1 rounded-lg text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-800 hover:text-primary dark:hover:text-primary-foreground transition-colors duration-200 {activeSection === item.href.substring(1) ? 'bg-primary/5 dark:bg-primary/10 text-primary dark:text-primary-foreground font-medium' : ''}"
+              on:click={() => mobileMenuOpen = false}
+            >
+              {item.label}
+            </a>
+          {/each}
+        </nav>
+      {/if}
+    </header>
+  
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+      <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
+        <div class="md:w-1/2 mb-12 md:mb-0">
+          <div class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-6">
+            Backend Developer & Pre-Final Year Undergrad
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-mono font-bold mb-6 leading-tight">
+            Building <span class="text-primary dark:text-primary-foreground relative">intelligent<span class="absolute bottom-2 left-0 w-full h-3 bg-primary/20 dark:bg-primary/30 -z-10 rounded-lg"></span></span> systems for the modern age
+          </h1>
+          <p class="text-base mb-8 text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
+            Passionate programmer with a love for challenges and problem-solving in building solutions. Skilled in Java and Python always eager to expand my knowledge and skills in Deep Learning and Software Development.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a 
+              href="#contact" 
+              class="px-8 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg hover:translate-y-[-2px] font-medium"
+            >
+              Get in Touch
+            </a>
+            <a 
+              href="#projects" 
+              class="px-8 py-3 border-2 border-primary text-primary dark:text-primary-foreground rounded-full hover:bg-primary/10 transition-all duration-300 font-medium"
+            >
+              View Projects
+            </a>
+          </div>
+        </div>
+        <div class="md:w-1/2 flex justify-center">
+          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-full blur-3xl"></div>
+            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-gray-800 shadow-2xl">
+              <img 
+                src="/sudo.jpg?height=320&width=320" 
+                alt="Om Aryan" 
+                class="w-full h-full object-cover"
+              />
+            </div>
+            <!--
+            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg">
+              <div class="text-center">
+                <div class="text-2xl font-bold text-primary">5+</div>
+                <div class="text-xs text-gray-600 dark:text-gray-400">Years Exp.</div>
+              </div>
+            </div>-->
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-100 to-white dark:from-gray-900 dark:to-gray-950 -z-10"></div>
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
+            Technical Expertise
+          </div>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Specialized Skills & Technologies</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            As I continue learning, I work with backend technologies and AI frameworks to build scalable and intelligent systems that tackle complex problems.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          {#each skills as skill, i}
+            <div 
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 hover:translate-y-[-5px] group"
+              in:fly={{ y: 20, delay: i * 100, duration: 500 }}
+            >
+              <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 dark:from-primary/30 dark:to-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                <img src={`/placeholder.svg?height=40&width=40`} alt={skill.name} class="w-8 h-8" />
+              </div>
+              <h3 class="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-foreground transition-colors duration-300">{skill.name}</h3>
+              <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{skill.description}</p>
+              <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full" style="width: {skill.level}%; transition: width 1s ease-in-out;"></div>
+              </div>
+              <div class="mt-2 text-right text-sm text-gray-500 dark:text-gray-400">{skill.level}%</div>
+            </div>
+          {/each}
+        </div>
+        
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+            <h4 class="text-lg font-bold mb-3 flex items-center">
+              <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                </svg>
+              </span>
+              Languages
+            </h4>
+            <div class="ml-11 flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Python</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Java</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">JavaScript</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">SQL</span>
+            </div>
+          </div>
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+            <h4 class="text-lg font-bold mb-3 flex items-center">
+              <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                </svg>
+              </span>
+              Databases
+            </h4>
+            <div class="ml-11 flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">PostgreSQL</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">MySQL</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">MongoDB</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Redis</span>
+            </div>
+          </div>
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+            <h4 class="text-lg font-bold mb-3 flex items-center">
+              <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
+                </svg>
+              </span>
+              Tools
+            </h4>
+            <div class="ml-11 flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Docker</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Git</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">CI/CD</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">AWS</span>
+            </div>
+          </div>
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+            <h4 class="text-lg font-bold mb-3 flex items-center">
+              <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                </svg>
+              </span>
+              Methodologies
+            </h4>
+            <div class="ml-11 flex flex-wrap gap-2">
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Agile</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">TDD</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Microservices</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">DevOps</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
+            Featured Work
+          </div>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Projects That Make an Impact</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Explore a selection of my most significant projects, showcasing my expertise in backend development and AI solutions.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {#each projects as project, i}
+            <div 
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:translate-y-[-5px]"
+              in:fly={{ y: 20, delay: i * 150, duration: 500 }}
+            >
+              <div class="relative overflow-hidden">
+                <img 
+                  src={project.image || "/placeholder.svg"} 
+                  alt={project.title} 
+                  class="w-full h-56 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold text-white mb-2">{project.title}</h3>
+                    <p class="text-gray-200 text-sm">{project.description}</p>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-foreground transition-colors duration-300">{project.title}</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
+                <div class="flex flex-wrap gap-2 mb-6">
+                  {#each project.technologies as tech}
+                    <span class="px-3 py-1 bg-primary/10 text-primary dark:text-primary-foreground text-sm rounded-full">
+                      {tech}
+                    </span>
+                  {/each}
+                </div>
+                <a 
+                  href={project.link} 
+                  class="inline-flex items-center text-primary dark:text-primary-foreground font-medium hover:underline group/link"
+                >
+                  View Project
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          {/each}
+        </div>
+        
+        <div class="mt-16 text-center">
+          <a 
+            href="https://github.com/cyberpsychofc?tab=repositories" 
+            class="inline-flex items-center px-8 py-3 border-2 border-primary text-primary dark:text-primary-foreground rounded-full hover:bg-primary/10 transition-all duration-300 font-medium group"
+          >
+            View All Projects
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Technology Sections -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
+            Core Technologies
+          </div>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Specialized Technology Expertise</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Deep knowledge and hands-on experience with cutting-edge technologies for building robust and intelligent systems.
+          </p>
+        </div>
+        
+        <div class="space-y-24">
+          <!-- Django Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+              <div class="flex items-center mb-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-green-500/20 to-green-500/5 dark:from-green-500/30 dark:to-green-500/10 rounded-2xl flex items-center justify-center mr-4">
+                  <img src="/django.svg?height=100&width=100" alt="Django" class="w-8 h-8" />
+                </div>
+                <h3 class="text-2xl font-bold">Django</h3>
+              </div>
+              
+              <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                Building robust, scalable web applications with Django's powerful features for rapid development, security, and maintainability.
+              </p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
+                  <h4 class="text-lg font-semibold mb-3 text-green-600 dark:text-green-400">Core Competencies</h4>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Django ORM & Database Optimization
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Django REST Framework
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Authentication & Authorization
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Celery Task Management
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
+                  <h4 class="text-lg font-semibold mb-3 text-green-600 dark:text-green-400">Notable Projects</h4>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      E-commerce Platform
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Content Management System
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Real-time Analytics Dashboard
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      API Gateway for Microservices
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
+                  <h4 class="text-lg font-semibold mb-3 text-green-600 dark:text-green-400">Contributions</h4>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Open-source package for Django caching
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Django community forum moderator
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Technical reviewer for Django books
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Conference speaker on Django scalability
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="order-1 lg:order-2 flex justify-center">
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-primary/20 rounded-2xl blur-3xl"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 border border-gray-100 dark:border-gray-700">
+                  <img src="/placeholder.svg?height=400&width=500" alt="Django Project" class="rounded-lg w-full h-auto" />
+                </div>
+                <div class="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg border border-gray-100 dark:border-gray-700">
+                  <img src="/placeholder.svg?height=60&width=60" alt="Django Logo" class="w-12 h-12" />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Langchain Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2">
+              <div class="flex items-center mb-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-amber-400/20 to-amber-400/10 dark:from-amber-400/30 dark:to-amber-400/20 rounded-2xl flex items-center justify-center mr-4">
+                  <img src="/langchain.svg?height=100&width=100" alt="Langchain" class="w-8 h-8" />
+                </div>
+                <h3 class="text-2xl font-bold">Langchain</h3>
+              </div>
+              
+              <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                Leveraging the power of Large Language Models to build sophisticated AI applications with Langchain's flexible framework for LLM orchestration.
+              </p>
+              
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
+                  <h4 class="text-lg font-semibold mb-3 text-amber-600 dark:text-amber-400">Core Competencies</h4>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      LLM Chain Development
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Agent Creation & Orchestration
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Document Processing & RAG
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Custom Tool Development
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
+                  <h4 class="text-lg font-semibold mb-3 text-amber-600 dark:text-amber-400">Notable Projects</h4>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Legal Document Analysis System
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Customer Support AI Assistant
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Research Paper Summarization
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Multi-agent Workflow Automation
+                    </li>
+                  </ul>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
+                  <h4 class="text-lg font-semibold mb-3 text-amber-600 dark:text-amber-400">Contributions</h4>
+                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Langchain community contributor
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Custom tools for specialized domains
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Tutorial series on best practices
+                    </li>
+                    <li class="flex items-start">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                      </svg>
+                      Enterprise integration patterns
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            
+            <div class="order-1 flex justify-center">
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-primary/20 rounded-2xl blur-3xl"></div>
+                <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 border border-gray-100 dark:border-gray-700">
+                  <img src="/placeholder.svg?height=400&width=500" alt="Langchain Project" class="rounded-lg w-full h-auto" />
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg border border-gray-100 dark:border-gray-700">
+                  <img src="/placeholder.svg?height=60&width=60" alt="Langchain Logo" class="w-12 h-12" />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Other technology sections would follow the same pattern -->
+        </div>
+      </div>
+    </section>
+  
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
+            Professional Journey
+          </div>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Work Experience</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            A track record of success in developing innovative solutions across various industries and technologies.
+          </p>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          {#each experiences as experience, i}
+            <div 
+              class="relative pl-10 pb-16 {i !== experiences.length - 1 ? 'border-l-2 border-primary/20' : ''}"
+              in:fly={{ y: 20, delay: i * 150, duration: 500 }}
+            >
+              <div class="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-primary border-4 border-white dark:border-gray-900"></div>
+              <div class="mb-4">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium rounded-full mb-2">
+                  {experience.period}
+                </span>
+              </div>
+              <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:translate-y-[-5px]">
+                <h3 class="text-xl font-bold mb-1">{experience.position}</h3>
+                <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">{experience.company}</h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{experience.description}</p>
+              </div>
+            </div>
+          {/each}
+        </div>
+        
+        <div class="mt-16 text-center">
+          <a 
+            href="https://drive.google.com/file/d/1esbaL0ah3GeWAkzGXZcqEFwdO6pEGo6M/view?usp=drive_link" 
+            class="inline-flex items-center px-8 py-3 bg-white dark:bg-gray-800 border-2 border-primary text-primary dark:text-primary-foreground rounded-full hover:bg-primary/5 transition-all duration-300 font-medium group shadow-lg hover:shadow-xl"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+            Download Resume
+          </a>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Blog Section -->
+    <section id="blog" class="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
+            Knowledge Sharing
+          </div>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Latest Articles & Insights</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Sharing expertise, best practices, and insights on backend development, AI, and emerging technologies.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {#each blogPosts as post, i}
+            <div 
+              class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:translate-y-[-5px]"
+              in:fly={{ y: 20, delay: i * 150, duration: 500 }}
+            >
+              <div class="relative overflow-hidden h-48">
+                <img 
+                  src={post.image || "/placeholder.svg"} 
+                  alt={post.title} 
+                  class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
+                  <div class="p-6">
+                    <a 
+                      href={post.link} 
+                      class="inline-flex items-center text-white font-medium hover:underline"
+                    >
+                      Read Article
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div class="p-6">
+                <div class="flex items-center mb-3">
+                  <div class="text-sm text-gray-500 dark:text-gray-400">{post.date}</div>
+                  <div class="ml-auto px-3 py-1 bg-primary/10 text-primary dark:text-primary-foreground text-xs rounded-full">
+                    Tutorial
+                  </div>
+                </div>
+                <h3 class="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-foreground transition-colors duration-300">{post.title}</h3>
+                <p class="text-gray-600 dark:text-gray-300 mb-4 line-clamp-3">{post.excerpt}</p>
+                <a 
+                  href={post.link} 
+                  class="inline-flex items-center text-primary dark:text-primary-foreground font-medium hover:underline group/link"
+                >
+                  Read More
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 group-hover/link:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          {/each}
+        </div>
+        
+        <div class="mt-16 text-center">
+          <a 
+            href="/blog" 
+            class="inline-flex items-center px-8 py-3 border-2 border-primary text-primary dark:text-primary-foreground rounded-full hover:bg-primary/10 transition-all duration-300 font-medium group"
+          >
+            View All Articles
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 -z-10"></div>
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
+            Let's Connect
+          </div>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Get In Touch</h2>
+          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+            Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.
+          </p>
+        </div>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
+            <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+            <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              Feel free to reach out if you're looking for a developer, have a question, or just want to connect.
+            </p>
+            
+            <div class="space-y-6">
+              <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary dark:text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Email</div>
+                  <a href="mailto:aryan2003k@gmail.com" class="text-lg font-medium hover:text-primary dark:hover:text-primary-foreground transition-colors duration-200">aryan2003k@gmail.com</a>
+                </div>
+              </div>
+              
+              <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary dark:text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Phone</div>
+                  <a href="tel:+1234567890" class="text-lg font-medium hover:text-primary dark:hover:text-primary-foreground transition-colors duration-200">+91 9892593262</a>
+                </div>
+              </div>
+              
+              <div class="flex items-center">
+                <div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mr-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary dark:text-primary-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Location</div>
+                  <span class="text-lg font-medium">Nagpur, Maharashtra</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="mt-10">
+              <h4 class="text-lg font-bold mb-4">Connect with me</h4>
+              <div class="flex space-x-4">
+                <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors duration-200 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-primary dark:text-primary-foreground group-hover:scale-110 transition-transform duration-200" viewBox="0 0 16 16">
+                    <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401zm-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4z"/>
+                  </svg>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors duration-200 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-primary dark:text-primary-foreground group-hover:scale-110 transition-transform duration-200" viewBox="0 0 16 16">
+                    <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
+                  </svg>
+                </a>
+                <a href="#" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors duration-200 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-primary dark:text-primary-foreground group-hover:scale-110 transition-transform duration-200" viewBox="0 0 16 16">
+                    <path d="M5.026 15c6.038 0 9.341-5.003 9.341-9.334 0-.14 0-.282-.006-.422A6.685 6.685 0 0 0 16 3.542a6.658 6.658 0 0 1-1.889.518 3.301 3.301 0 0 0 1.447-1.817 6.533 6.533 0 0 1-2.087.793A3.286 3.286 0 0 0 7.875 6.03a9.325 9.325 0 0 1-6.767-3.429 3.289 3.289 0 0 0 1.018 4.382A3.323 3.323 0 0 1 .64 6.575v.045a3.288 3.288 0 0 0 2.632 3.218 3.203 3.203 0 0 1-.865.115 3.23 3.23 0 0 1-.614-.057 3.283 3.283 0 0 0 3.067 2.277A6.588 6.588 0 0 1 .78 13.58a6.32 6.32 0 0 1-.78-.045A9.344 9.344 0 0 0 5.026 15z"/>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+          
+          <div class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-gray-700">
+            <h3 class="text-2xl font-bold mb-6">Send Me a Message</h3>
+            
+            {#if formSubmitted}
+              <div class="bg-green-50 dark:bg-green-900/30 text-green-800 dark:text-green-300 p-6 rounded-xl mb-6 border border-green-200 dark:border-green-800" transition:fade>
+                <div class="flex items-center mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-green-600 dark:text-green-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                  <h4 class="text-lg font-bold text-green-800 dark:text-green-300">Message Sent!</h4>
+                </div>
+                <p class="text-green-700 dark:text-green-400">Thank you for your message! I'll get back to you as soon as possible.</p>
+              </div>
+            {/if}
+            
+            {#if formError}
+              <div class="bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-300 p-6 rounded-xl mb-6 border border-red-200 dark:border-red-800" transition:fade>
+                <div class="flex items-center mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600 dark:text-red-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <h4 class="text-lg font-bold text-red-800 dark:text-red-300">Error</h4>
+                </div>
+                <p class="text-red-700 dark:text-red-400">Please fill in all fields before submitting.</p>
+              </div>
+            {/if}
+            
+            <form on:submit|preventDefault={handleSubmit} class="space-y-6">
+              <div>
+                <label for="name" class="block text-sm font-medium mb-2">Name</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  bind:value={name}
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white transition-colors duration-200"
+                  placeholder="Your name"
+                />
+              </div>
+              
+              <div>
+                <label for="email" class="block text-sm font-medium mb-2">Email</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  bind:value={email}
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white transition-colors duration-200"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+              
+              <div>
+                <label for="message" class="block text-sm font-medium mb-2">Message</label>
+                <textarea 
+                  id="message" 
+                  bind:value={message}
+                  rows="5"
+                  class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white transition-colors duration-200"
+                  placeholder="Your message here..."
+                ></textarea>
+              </div>
+              
+              <button 
+                type="submit"
+                class="w-full px-6 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:translate-y-[-2px] font-medium"
+              >
+                Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <!-- Footer -->
+    <footer class="py-12 bg-gray-900 text-white">
+      <div class="container mx-auto px-6">
+        <div class="flex flex-col md:flex-row justify-between items-center mb-10">
+          <div class="mb-8 md:mb-0 text-center md:text-left">
+            <a href="#home" class="text-3xl font-mono font-bold text-white inline-block relative group">
+              <span class="relative z-10">Want to know more?
+              </span>
+              <span class="absolute bottom-0 left-0 w-full h-3 bg-primary/30 rounded-lg -z-0 group-hover:h-4 transition-all duration-300"></span>
+            </a>
+            <p class="text-gray-400 mt-3 max-w-md">Hit me up on my socials to connect and let's collaborate and build something exciting...</p>
+          </div>
+          
+          <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 md:mb-0">
+            {#each navItems as item}
+              <a href={item.href} class="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
+                {item.label}
+              </a>
+            {/each}
+          </nav>
+        </div>
+        
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+            &copy; {new Date().getFullYear()} Om Aryan. All rights reserved.
+          </p>
+          
+          <div class="flex items-center gap-4">
+            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+              Privacy Policy
+            </a>
+            <span class="text-gray-600">•</span>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+              Terms of Service
+            </a>
+            <span class="text-gray-600">•</span>
+            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
+              Sitemap
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+<style>
+  :root {
+    --color-primary: #02ca3b;
+    --color-primary-foreground: #f8fafc;
+  }
+  
+  .dark {
+    --color-primary: #818cf8;
+    --color-primary-foreground: #f8fafc;
+  }
+  
+  .text-primary {
+    color: var(--color-primary);
+  }
+  
+  .text-primary-foreground {
+    color: var(--color-primary-foreground);
+  }
+  
+  .bg-primary {
+    background-color: var(--color-primary);
+  }
+  
+  .bg-primary\/5 {
+    background-color: rgba(99, 102, 241, 0.05);
+  }
+  
+  .bg-primary\/10 {
+    background-color: rgba(99, 102, 241, 0.1);
+  }
+  
+  .bg-primary\/20 {
+    background-color: rgba(99, 102, 241, 0.2);
+  }
+  
+  .bg-primary\/30 {
+    background-color: rgba(99, 102, 241, 0.3);
+  }
+  
+  .bg-primary\/90 {
+    background-color: rgba(0, 245, 110, 0.9);
+  }
+  
+  .border-primary {
+    border-color: var(--color-primary);
+  }
+  
+  .border-primary\/20 {
+    border-color: rgba(99, 102, 241, 0.2);
+  }
+  
+  .border-primary\/30 {
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+  
+  .focus\:ring-primary:focus {
+    --tw-ring-color: var(--color-primary);
+  }
+  
+  .focus\:border-primary:focus {
+    border-color: var(--color-primary);
+  }
+  
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .font-display {
+    font-family: 'Playfair Display', serif;
+  }
+  
+  section {
+    scroll-margin-top: 5rem;
+  }
+  
+  .in-view {
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+  
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #f1f1f1;
+  }
+  
+  .dark ::-webkit-scrollbar-track {
+    background: #1f2937;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #c7c7c7;
+    border-radius: 5px;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb {
+    background: #4b5563;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #a3a3a3;
+  }
+  
+  .dark ::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
+  }
+</style>
