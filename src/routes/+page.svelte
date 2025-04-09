@@ -3,7 +3,7 @@ import { onMount } from 'svelte';
 import { fade, fly, slide } from 'svelte/transition';
 import '../app.css'
 
-// Navigation items
+
 const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'Skills', href: '#skills' },
@@ -13,35 +13,6 @@ const navItems = [
     { label: 'Contact', href: '#contact' }
 ];
 
-// Skills data
-const skills = [
-    {
-    name: 'Django',
-    icon: 'django.svg',
-    description: "Building robust web applications with Python's most popular framework",
-    level: 90
-    },
-    {
-    name: 'Langchain',
-    icon: 'langchain.svg',
-    description: 'Creating powerful AI applications with LLM chains and agents',
-    level: 85
-    },
-    {
-    name: 'SpringBoot',
-    icon: 'spring.svg',
-    description: "Developing enterprise-grade applications with Java's leading framework",
-    level: 80
-    },
-    {
-    name: 'Deep Learning',
-    icon: 'deep-learning.svg',
-    description: 'Implementing neural networks for complex problem solving',
-    level: 75
-    }
-];
-
-// Projects data
 const projects = [
     {
     title: 'Project 1',
@@ -56,24 +27,9 @@ const projects = [
     technologies: ['Django', 'PostgreSQL', 'Redis', 'Celery'],
     image: '/placeholder.svg?height=300&width=500',
     link: '#'
-    },
-    {
-    title: 'Project 3',
-    description: 'A modular ERP system for manufacturing companies with real-time reporting and analytics.',
-    technologies: ['SpringBoot', 'Java', 'MySQL', 'React'],
-    image: '/placeholder.svg?height=300&width=500',
-    link: '#'
-    },
-    {
-    title: 'Project 4',
-    description: 'A deep learning solution that identifies defects in manufacturing processes using computer vision.',
-    technologies: ['Python', 'TensorFlow', 'OpenCV', 'Flask'],
-    image: '/placeholder.svg?height=300&width=500',
-    link: '#'
     }
 ];
 
-// Experience data
 const experiences = [
     {
     company: 'IIT Bombay',
@@ -83,52 +39,39 @@ const experiences = [
     }
 ];
 
-// Blog posts data
 const blogPosts = [
     {
-    title: 'Building Robust APIs with Django REST Framework',
+    title: 'Sample Blog Post 1',
     excerpt: 'Learn how to create scalable and secure APIs using Django REST Framework with best practices for authentication and performance.',
     date: 'April 2, 2025',
     image: '/placeholder.svg?height=200&width=300',
     link: '/blog/django-rest-framework'
     },
     {
-    title: 'Getting Started with Langchain for Document Processing',
+    title: 'Sample Blog Post 2',
     excerpt: 'A comprehensive guide to using Langchain for document analysis, extraction, and summarization with practical examples.',
     date: 'March 15, 2025',
     image: '/placeholder.svg?height=200&width=300',
     link: '/blog/langchain-document-processing'
-    },
-    {
-    title: 'Microservices Architecture with SpringBoot',
-    excerpt: 'Explore the benefits and challenges of implementing microservices using SpringBoot and how to overcome common pitfalls.',
-    date: 'February 28, 2025',
-    image: '/placeholder.svg?height=200&width=300',
-    link: '/blog/springboot-microservices'
     }
 ];
 
-// Mobile menu state
 let mobileMenuOpen = false;
 
-// Form data
 let name = '';
 let email = '';
 let message = '';
 let formSubmitted = false;
 let formError = false;
 
-// Theme toggle
 let darkMode = false;
 
 onMount(() => {
-    // Check system preference for dark mode
     if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
     darkMode = true;
     document.documentElement.classList.add('dark');
     }
 
-    // Initialize intersection observer for animations
     const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -146,7 +89,6 @@ onMount(() => {
     };
 });
 
-// Handle form submission
 const handleSubmit = () => {
     if (name && email && message) {
     console.log({ name, email, message });
@@ -160,7 +102,6 @@ const handleSubmit = () => {
     }
 };
 
-// Toggle dark mode
 const toggleDarkMode = () => {
     darkMode = !darkMode;
     if (darkMode) {
@@ -170,15 +111,23 @@ const toggleDarkMode = () => {
     }
 };
 
-// Intersection Observer for animations
+const downloadResume = () => {
+  const link = document.createElement('a');
+  link.href = '/resume.pdf';
+  link.download = 'Om_Aryan_Resume.pdf';
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
 let sections = [];
 let activeSection = 'home';
 </script>
 
 <svelte:head>
   <title>Om Aryan</title>
-  <meta name="description" content="Portfolio of Om Aryan, a backend developer specializing in Django, Langchain, SpringBoot, and deep learning." />
-  <meta name="keywords" content="backend developer, Django, Langchain, SpringBoot, deep learning, portfolio" />
+  <meta name="description" content="Portfolio of Om Aryan, a backend developer specializing in building solutions." />
+  <meta name="keywords" content="backend developer, Django, Langchain, SpringBoot, deep learning, ai" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
@@ -309,29 +258,10 @@ let activeSection = 'home';
           <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
             Technical Expertise
           </div>
-          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Specialized Skills & Technologies</h2>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Skills & Technologies</h2>
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
             As I continue learning, I work with backend technologies and AI frameworks to build scalable and intelligent systems that tackle complex problems.
           </p>
-        </div>
-        
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {#each skills as skill, i}
-            <div 
-              class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 p-8 hover:translate-y-[-5px] group"
-              in:fly={{ y: 20, delay: i * 100, duration: 500 }}
-            >
-              <div class="w-16 h-16 bg-gradient-to-br from-primary/20 to-primary/5 dark:from-primary/30 dark:to-primary/10 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                <img src={`/placeholder.svg?height=40&width=40`} alt={skill.name} class="w-8 h-8" />
-              </div>
-              <h3 class="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-foreground transition-colors duration-300">{skill.name}</h3>
-              <p class="text-gray-600 dark:text-gray-300 mb-6 leading-relaxed">{skill.description}</p>
-              <div class="w-full h-2 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
-                <div class="h-full bg-gradient-to-r from-primary to-primary/70 rounded-full" style="width: {skill.level}%; transition: width 1s ease-in-out;"></div>
-              </div>
-              <div class="mt-2 text-right text-sm text-gray-500 dark:text-gray-400">{skill.level}%</div>
-            </div>
-          {/each}
         </div>
         
         <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -345,10 +275,11 @@ let activeSection = 'home';
               Languages
             </h4>
             <div class="ml-11 flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Python</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Java</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">JavaScript</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">SQL</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Python</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">C</span>
+                <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">SQL</span>
+              
             </div>
           </div>
           <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
@@ -361,9 +292,9 @@ let activeSection = 'home';
               Databases
             </h4>
             <div class="ml-11 flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">PostgreSQL</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">MySQL</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">MongoDB</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">OracleDB</span>              
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Pinecone</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Redis</span>
             </div>
           </div>
@@ -374,13 +305,12 @@ let activeSection = 'home';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" />
                 </svg>
               </span>
-              Tools
+              Deployment
             </h4>
             <div class="ml-11 flex flex-wrap gap-2">
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Docker</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Git</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">CI/CD</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">AWS</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">AAmazon Web Services</span>
             </div>
           </div>
           <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
@@ -390,13 +320,13 @@ let activeSection = 'home';
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
                 </svg>
               </span>
-              Methodologies
+              Web Frameworks
             </h4>
             <div class="ml-11 flex flex-wrap gap-2">
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Agile</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">TDD</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Microservices</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">DevOps</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Django</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Django REST Framework</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">FastAPI</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Flask</span>
             </div>
           </div>
         </div>
@@ -480,9 +410,9 @@ let activeSection = 'home';
           <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
             Core Technologies
           </div>
-          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Specialized Technology Expertise</h2>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">What I Love Working With</h2>
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-            Deep knowledge and hands-on experience with cutting-edge technologies for building robust and intelligent systems.
+            My experience and hands-on experience with cutting-edge technologies for building robust and intelligent softwares.
           </p>
         </div>
         
@@ -498,100 +428,10 @@ let activeSection = 'home';
               </div>
               
               <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Building robust, scalable web applications with Django's powerful features for rapid development, security, and maintainability.
+                I love building scalable and robust web applications using Django. Its clean design, powerful ORM, and built-in admin make it my go-to framework for quickly turning ideas into production-ready systems. From developing APIs to managing databases and user authentication, I enjoy working with every part of the Django ecosystem.
               </p>
               
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
-                  <h4 class="text-lg font-semibold mb-3 text-green-600 dark:text-green-400">Core Competencies</h4>
-                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Django ORM & Database Optimization
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Django REST Framework
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Authentication & Authorization
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Celery Task Management
-                    </li>
-                  </ul>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
-                  <h4 class="text-lg font-semibold mb-3 text-green-600 dark:text-green-400">Notable Projects</h4>
-                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      E-commerce Platform
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Content Management System
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Real-time Analytics Dashboard
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      API Gateway for Microservices
-                    </li>
-                  </ul>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
-                  <h4 class="text-lg font-semibold mb-3 text-green-600 dark:text-green-400">Contributions</h4>
-                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Open-source package for Django caching
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Django community forum moderator
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Technical reviewer for Django books
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Conference speaker on Django scalability
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              
             </div>
             
             <div class="order-1 lg:order-2 flex justify-center">
@@ -618,100 +458,10 @@ let activeSection = 'home';
               </div>
               
               <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
-                Leveraging the power of Large Language Models to build sophisticated AI applications with Langchain's flexible framework for LLM orchestration.
+                I'm equally passionate about leveraging the power of Large Language Models to build sophisticated AI applications with Langchain's flexible framework for LLM orchestration. Whether it's chaining prompts, integrating with vector databases, or deploying document-based question answering systems, I enjoy pushing the limits of what’s possible with AI and automation.
               </p>
               
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
-                  <h4 class="text-lg font-semibold mb-3 text-amber-600 dark:text-amber-400">Core Competencies</h4>
-                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      LLM Chain Development
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Agent Creation & Orchestration
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Document Processing & RAG
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Custom Tool Development
-                    </li>
-                  </ul>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
-                  <h4 class="text-lg font-semibold mb-3 text-amber-600 dark:text-amber-400">Notable Projects</h4>
-                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Legal Document Analysis System
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Customer Support AI Assistant
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Research Paper Summarization
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Multi-agent Workflow Automation
-                    </li>
-                  </ul>
-                </div>
-                
-                <div class="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 dark:border-gray-700">
-                  <h4 class="text-lg font-semibold mb-3 text-amber-600 dark:text-amber-400">Contributions</h4>
-                  <ul class="space-y-2 text-gray-600 dark:text-gray-300">
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Langchain community contributor
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Custom tools for specialized domains
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Tutorial series on best practices
-                    </li>
-                    <li class="flex items-start">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-amber-500 mr-2 shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                      </svg>
-                      Enterprise integration patterns
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              
             </div>
             
             <div class="order-1 flex justify-center">
@@ -767,15 +517,15 @@ let activeSection = 'home';
         </div>
         
         <div class="mt-16 text-center">
-          <a 
-            href="https://drive.google.com/file/d/1esbaL0ah3GeWAkzGXZcqEFwdO6pEGo6M/view?usp=drive_link" 
-            class="inline-flex items-center px-8 py-3 bg-white dark:bg-gray-800 border-2 border-primary text-primary dark:text-primary-foreground rounded-full hover:bg-primary/5 transition-all duration-300 font-medium group shadow-lg hover:shadow-xl"
-          >
+            <button 
+            on:click={downloadResume} 
+            class="inline-flex items-center px-8 py-3 bg-white dark:bg-gray-800 border-2 border-primary text-primary dark:text-primary-foreground rounded-full hover:bg-primary/5 transition-all duration-300 font-medium group shadow-lg hover:shadow-xl active:scale-95"
+            >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
             </svg>
             Download Resume
-          </a>
+            </button>
         </div>
       </div>
     </section>
