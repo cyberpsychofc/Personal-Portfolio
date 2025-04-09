@@ -34,8 +34,8 @@ const experiences = [
     {
     company: 'IIT Bombay',
     position: 'Backend Developer Intern',
-    period: 'October 2021 - Present',
-    description: 'Leading the development of enterprise-grade applications using SpringBoot and microservices architecture. Implemented CI/CD pipelines and mentored junior developers.'
+    period: 'October 2024 - Present',
+    description: 'Engineered a robust backend system from scratch, enabling seamless user registration and secure OTP authentication, supporting mulitple model architectures.'
     }
 ];
 
@@ -55,6 +55,22 @@ const blogPosts = [
     link: '/blog/langchain-document-processing'
     }
 ];
+
+let github_user = "cyberpsychofc"
+
+let django_tiles = [
+    "LocomotiveDataAPI",
+    "RedisSocketChat"
+  ];
+
+let lg_tiles = [
+  "DocAnalyzerAI",
+  "Content-Engine-Langchain"
+];
+
+// Track the index of the tile being hovered over.
+let hoveredIndex = -1;
+let hoveredIndex2 = -1;
 
 let mobileMenuOpen = false;
 
@@ -315,7 +331,7 @@ let activeSection = 'home';
             <div class="ml-11 flex flex-wrap gap-2">
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Docker</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Git</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">AAmazon Web Services</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Amazon Web Services</span>
             </div>
           </div>
           <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
@@ -330,7 +346,7 @@ let activeSection = 'home';
             <div class="ml-11 flex flex-wrap gap-2">
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Django</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Django REST Framework</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">FastAPI</span>
+              <!--<span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">FastAPI</span>-->
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Flask</span>
             </div>
           </div>
@@ -442,10 +458,25 @@ let activeSection = 'home';
             <div class="order-1 lg:order-2 flex justify-center">
               <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-primary/20 rounded-2xl blur-3xl"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 border border-gray-100 dark:border-gray-700">
-                  <img src="/placeholder.svg?height=400&width=500" alt="Django Project" class="rounded-lg w-full h-auto" />
+                <div class="relative dark:bg-[#1e293b] text-gray-900 dark:text-gray-200 rounded-2xl shadow-2xl p-5 border border-gray-100 dark:border-gray-700 w-[300px] md:w-[400px]">
+                  <div class="drawer">
+                    {#each django_tiles as repo, index}
+                      <div 
+                        class="tile {hoveredIndex === index ? 'hovered' : ''} {hoveredIndex >= 0 && index > hoveredIndex ? 'shifted' : ''}"
+                        on:mouseenter={() => hoveredIndex = index}
+                        on:mouseleave={() => hoveredIndex = -1}
+                      >
+                      <a href="https://github.com/{github_user}/{repo}" target="_blank" rel="noopener">
+                        <img src="https://gh-card.dev/repos/{github_user}/{repo}.svg"
+                        class="dark:invert rounded-2xl" 
+                        alt="GitHub Card" 
+                        />
+                      </a>
+                      </div>
+                    {/each}
+                  </div>
                 </div>
-                <div class="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg border border-gray-100 dark:border-gray-700 z-10">
                   <img src="/favicon.png?height=60&width=60" alt="Cyberpsych Logo" class="w-12 h-12" />
                 </div>
               </div>
@@ -472,10 +503,24 @@ let activeSection = 'home';
             <div class="order-1 flex justify-center">
               <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-primary/20 rounded-2xl blur-3xl"></div>
-                <div class="relative bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 border border-gray-100 dark:border-gray-700">
-                  <img src="/placeholder.svg?height=400&width=500" alt="Langchain Project" class="rounded-lg w-full h-auto" />
-                </div>
-                <div class="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg border border-gray-100 dark:border-gray-700">
+                <div class="relative dark:bg-[#1e293b] text-gray-900 dark:text-gray-200 rounded-2xl shadow-2xl p-5 border border-gray-100 dark:border-gray-700 w-[300px] md:w-[400px]">
+                  <div class="drawer">
+                    {#each lg_tiles as repo, index}
+                      <div 
+                        class="tile {hoveredIndex2 === index ? 'hovered' : ''} {hoveredIndex2 >= 0 && index > hoveredIndex2 ? 'shifted' : ''}"
+                        on:mouseenter={() => hoveredIndex2 = index}
+                        on:mouseleave={() => hoveredIndex2 = -1}
+                      >
+                      <a href="https://github.com/{github_user}/{repo}" target="_blank" rel="noopener">
+                        <img src="https://gh-card.dev/repos/{github_user}/{repo}.svg"
+                        class="dark:invert rounded-2xl" 
+                        alt="GitHub Card" 
+                        />
+                      </a>
+                      </div>
+                    {/each}
+                  </div>
+                <div class="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg border border-gray-100 dark:border-gray-700 z-10">
                   <img src="/favicon.png?height=60&width=60" alt="Cyberpsych Logo" class="w-12 h-12" />
                 </div>
               </div>
@@ -903,6 +948,62 @@ let activeSection = 'home';
     to {
       opacity: 1;
       transform: translateY(0);
+    }
+  }
+
+  .drawer {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+    margin: 2rem auto;
+    position: relative;
+    max-height: 400px;
+  }
+
+  /* Base tile styling */
+  .tile {
+    background: #010d21;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: -50px;      /* Overlap tiles for the drawer effect */
+    transition: transform 0.3s ease, margin-top 0.3s ease;
+    position: relative;
+    z-index: 1;
+    max-height: 300px;
+    overflow: hidden;
+  }
+  /* First tile should not have a negative margin */
+  .tile:first-child {
+    margin-top: 0;
+  }
+
+  /* On hover, slide the tile upward */
+  .tile.hovered {
+    transform: translateY(-20px);
+    z-index: 2;
+    max-height: 320px; /* Use max-height for smoother transitions */
+    overflow: visible; /* Ensure content is visible when hovered */
+  }
+
+  /* All tiles below the hovered tile adjust their margin so the gap is visible */
+  .tile.shifted {
+    margin-top: 0;
+  }
+  /* Reveal details when hovering over a tile */
+  .tile.hovered .file-details {
+    opacity: 1;
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 600px) {
+    .drawer {
+      max-width: 90%;
+      margin: 1rem auto;
+    }
+    .tile {
+      padding: 0.75rem;
     }
   }
   
