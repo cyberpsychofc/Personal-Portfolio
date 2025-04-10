@@ -15,18 +15,18 @@ const navItems = [
 
 const projects = [
     {
-    title: 'Project 1',
-    description: 'A Langchain application that processes, analyzes, and extracts insights from legal documents using LLMs.',
-    technologies: ['Python', 'Langchain', 'OpenAI', 'FastAPI'],
-    image: '/placeholder.svg?height=300&width=500',
-    link: '#'
+    title: 'Bio Insight Pro',
+    description: 'AI-powered tool designed to assist doctors and researchers by analyzing large volumes of medical and research documents.',
+    technologies: ['Django', 'Langchain', 'OpenAI', 'React', 'Pinecone'],
+    image: '/bip.png',
+    link: 'https://bioinsight.pro'
     },
     {
-    title: 'Project 2',
-    description: 'A full-featured e-commerce solution with inventory management, payment processing, and analytics.',
-    technologies: ['Django', 'PostgreSQL', 'Redis', 'Celery'],
-    image: '/placeholder.svg?height=300&width=500',
-    link: '#'
+    title: 'CyberpscyhAI',
+    description: 'AI Agent powered integrated X (formerly ~Twitter) bot which tweets interesting stuff.',
+    technologies: ['Flask', 'Docker', 'Twitter API'],
+    image: '/cyberpsychai.png?height=300&width=500',
+    link: 'https://x.com/CyberpsychAI'
     }
 ];
 
@@ -59,13 +59,15 @@ const blogPosts = [
 let github_user = "cyberpsychofc"
 
 let django_tiles = [
-    "LocomotiveDataAPI",
-    "RedisSocketChat"
+    "RedisSocketChat",
+    "LocomotiveDataAPI"
+    
   ];
 
 let lg_tiles = [
-  "DocAnalyzerAI",
-  "Content-Engine-Langchain"
+  "Content-Engine-Langchain",
+  "DocAnalyzerAI"
+  
 ];
 
 // Track the index of the tile being hovered over.
@@ -361,7 +363,7 @@ let activeSection = 'home';
           <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
             Featured Work
           </div>
-          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Projects That Make an Impact</h2>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Projects in Action</h2>
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
             Explore a selection of my most significant projects, showcasing my expertise in backend development and AI solutions.
           </p>
@@ -375,9 +377,9 @@ let activeSection = 'home';
             >
               <div class="relative overflow-hidden">
                 <img 
-                  src={project.image || "/placeholder.svg"} 
+                  src={project.image} 
                   alt={project.title} 
-                  class="w-full h-56 object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                  class="w-full h-56 object-cover object-left group-hover:scale-105 transition-transform duration-500"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end">
                   <div class="p-6">
@@ -388,7 +390,6 @@ let activeSection = 'home';
               </div>
               <div class="p-6">
                 <h3 class="text-xl font-bold mb-3 group-hover:text-primary dark:group-hover:text-primary-foreground transition-colors duration-300">{project.title}</h3>
-                <p class="text-gray-600 dark:text-gray-300 mb-4">{project.description}</p>
                 <div class="flex flex-wrap gap-2 mb-6">
                   {#each project.technologies as tech}
                     <span class="px-3 py-1 bg-primary/10 text-primary dark:text-primary-foreground text-sm rounded-full">
