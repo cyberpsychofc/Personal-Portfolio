@@ -246,9 +246,9 @@ let activeSection = 'home';
         <div class="md:w-1/2 flex justify-center">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-full blur-3xl"></div>
-            <div class="relative w-54 h-54 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-green-600 shadow-2x5">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-green-600 shadow-2x1">
               <img 
-                src="/sudo2.jpg?height=900&width=900" 
+                src="/sudo2.jpg?height=600&width=600" 
                 alt="Om Aryan" 
                 class="w-full h-full object-cover"
               />
