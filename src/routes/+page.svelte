@@ -1,7 +1,7 @@
 <script>
 import { onMount } from 'svelte';
 import { fade, fly, slide } from 'svelte/transition';
-import '../app.css'
+import '../app.css';
 
 
 const navItems = [
@@ -9,7 +9,7 @@ const navItems = [
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
     { label: 'Experience', href: '#experience' },
-    { label: 'Blog', href: '#blog' },
+    //{ label: 'Blog', href: '#blog' },
     { label: 'Contact', href: '#contact' }
 ];
 
@@ -46,14 +46,7 @@ const blogPosts = [
     date: 'April 2, 2025',
     image: '/placeholder.svg?height=200&width=300',
     link: '/blog/django-rest-framework'
-    },
-    {
-    title: 'Sample Blog Post 2',
-    excerpt: 'A comprehensive guide to using Langchain for document analysis, extraction, and summarization with practical examples.',
-    date: 'March 15, 2025',
-    image: '/placeholder.svg?height=200&width=300',
-    link: '/blog/langchain-document-processing'
-    }
+    } 
 ];
 
 let github_user = "cyberpsychofc"
@@ -67,7 +60,6 @@ let django_tiles = [
 let lg_tiles = [
   "Content-Engine-Langchain",
   "DocAnalyzerAI"
-  
 ];
 
 // Track the index of the tile being hovered over.
@@ -348,7 +340,7 @@ let activeSection = 'home';
             <div class="ml-11 flex flex-wrap gap-2">
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Django</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Django REST Framework</span>
-              <!--<span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">FastAPI</span>-->
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">FastAPI</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Flask</span>
             </div>
           </div>
@@ -581,7 +573,7 @@ let activeSection = 'home';
       </div>
     </section>
   
-    <!-- Blog Section -->
+    <!-- Blog Section
     <section id="blog" class="py-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-950 dark:to-gray-900">
       <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
@@ -656,7 +648,7 @@ let activeSection = 'home';
         </div>
       </div>
     </section>
-  
+   -->
     <!-- Contact Section -->
     <section id="contact" class="py-20 relative">
       <div class="absolute inset-0 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950 -z-10"></div>
