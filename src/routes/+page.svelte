@@ -2,6 +2,12 @@
 import { onMount } from 'svelte';
 import { fade, fly, slide } from 'svelte/transition';
 import '../app.css';
+import emailjs from '@emailjs/browser';
+
+
+let EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+let EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+let EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 
 const navItems = [
@@ -39,6 +45,7 @@ const experiences = [
     }
 ];
 
+/*
 const blogPosts = [
     {
     title: 'Sample Blog Post 1',
@@ -48,6 +55,7 @@ const blogPosts = [
     link: '/blog/django-rest-framework'
     } 
 ];
+*/
 
 let github_user = "cyberpsychofc"
 
@@ -73,6 +81,7 @@ let email = '';
 let message = '';
 let formSubmitted = false;
 let formError = false;
+let form;
 
 let darkMode = false;
 
@@ -99,18 +108,25 @@ onMount(() => {
     };
 });
 
-const handleSubmit = () => {
-    if (name && email && message) {
-    console.log({ name, email, message });
-    formSubmitted = true;
-    formError = false;
-    name = '';
-    email = '';
-    message = '';
-    } else {
-    formError = true;
+const handleSubmit = async () => {
+    try {
+      const result = await emailjs.sendForm(
+        EMAILJS_SERVICE_ID,
+        EMAILJS_TEMPLATE_ID,
+        form,
+        EMAILJS_PUBLIC_KEY
+      );
+      alert('Message sent successfully!');
+
+      name = '';
+      email = '';
+      message = '';
+      formSubmitted = true;
+    } catch (error) {
+      formError = true;
+      alert('Failed to send message. Please try again later.');
     }
-};
+  };
 
 const toggleDarkMode = () => {
     darkMode = !darkMode;
@@ -755,16 +771,17 @@ let activeSection = 'home';
                   </svg>
                   <h4 class="text-lg font-bold text-red-800 dark:text-red-300">Error</h4>
                 </div>
-                <p class="text-red-700 dark:text-red-400">Please fill in all fields before submitting.</p>
+                <p class="text-red-700 dark:text-red-400">Message was not sent, please try again later!</p>
               </div>
             {/if}
             
-            <form on:submit|preventDefault={handleSubmit} class="space-y-6">
+            <form bind:this={form} on:submit|preventDefault={handleSubmit} class="space-y-6">
               <div>
                 <label for="name" class="block text-sm font-medium mb-2">Name</label>
                 <input 
                   type="text" 
                   id="name" 
+                  name="name"
                   bind:value={name}
                   class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white transition-colors duration-200"
                   placeholder="Your name"
@@ -776,6 +793,7 @@ let activeSection = 'home';
                 <input 
                   type="email" 
                   id="email" 
+                  name="email"
                   bind:value={email}
                   class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white transition-colors duration-200"
                   placeholder="your.email@example.com"
@@ -786,6 +804,7 @@ let activeSection = 'home';
                 <label for="message" class="block text-sm font-medium mb-2">Message</label>
                 <textarea 
                   id="message" 
+                  name="message"
                   bind:value={message}
                   rows="5"
                   class="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary dark:bg-gray-700 dark:text-white transition-colors duration-200"
@@ -799,7 +818,7 @@ let activeSection = 'home';
               >
                 Send Message
               </button>
-            </form>
+            </form>            
           </div>
         </div>
       </div>
