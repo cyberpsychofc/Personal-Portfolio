@@ -116,7 +116,6 @@ const handleSubmit = async () => {
         form,
         EMAILJS_PUBLIC_KEY
       );
-      alert('Message sent successfully!');
 
       name = '';
       email = '';
@@ -124,7 +123,6 @@ const handleSubmit = async () => {
       formSubmitted = true;
     } catch (error) {
       formError = true;
-      alert('Failed to send message. Please try again later.');
     }
   };
 
