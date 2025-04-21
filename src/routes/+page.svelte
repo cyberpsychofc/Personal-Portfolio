@@ -9,6 +9,43 @@ let EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
 let EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
 let EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
+let texts = [
+    "intelligent",
+    "scalable",
+    "reliable",
+    "efficient",
+  ];
+
+let period = 2000;
+
+let text = '';
+let loopNum = 0;
+let isDeleting = false;
+
+const tick = () => {
+    let i = loopNum % texts.length;
+    let fullTxt = texts[i];
+
+    if (isDeleting) {
+      text = fullTxt.substring(0, text.length - 1);
+    } else {
+      text = fullTxt.substring(0, text.length + 1);
+    }
+
+    let delta = 200 - Math.random() * 100;
+    if (isDeleting) delta /= 2;
+
+    if (!isDeleting && text === fullTxt) {
+      delta = period;
+      isDeleting = true;
+    } else if (isDeleting && text === '') {
+      isDeleting = false;
+      loopNum++;
+      delta = 500;
+    }
+
+    setTimeout(tick, delta);
+  }
 
 const navItems = [
     { label: 'Home', href: '#home' },
@@ -90,6 +127,8 @@ onMount(() => {
     darkMode = true;
     document.documentElement.classList.add('dark');
     }
+
+    tick();
 
     const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -234,10 +273,10 @@ let activeSection = 'home';
       <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
         <div class="md:w-1/2 mb-12 md:mb-0">
           <div class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-6">
-            Backend Developer & Pre-Final Year Undergrad
+            Software Developer
           </div>
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-mono font-bold mb-6 leading-tight">
-            Building <span class="text-primary dark:text-primary-foreground relative">intelligent<span class="absolute bottom-2 left-0 w-full h-3 bg-primary/20 dark:bg-primary/30 -z-10 rounded-lg"></span></span> systems for the modern age
+            Building <br /><span class="text-primary dark:text-primary-foreground relative"><span class="wrap">{text}</span><span class="absolute bottom-2 left-0 w-full h-3 bg-primary/20 dark:bg-primary/30 -z-10 rounded-lg "></span><br /></span> systems for the modern age
           </h1>
           <p class="text-base mb-8 text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
             Passionate programmer with a love for challenges and problem-solving in building solutions. Skilled in Java and Python always eager to expand my knowledge and skills in Deep Learning and Software Development.
@@ -834,34 +873,12 @@ let activeSection = 'home';
             </a>
             <p class="text-gray-400 mt-3 max-w-md">Hit me up on my socials to connect and let's collaborate and build something exciting...</p>
           </div>
-          
-          <nav class="flex flex-wrap justify-center gap-x-8 gap-y-4 mb-8 md:mb-0">
-            {#each navItems as item}
-              <a href={item.href} class="text-gray-300 hover:text-white transition-colors duration-200 font-medium">
-                {item.label}
-              </a>
-            {/each}
-          </nav>
         </div>
         
         <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p class="text-gray-400 text-sm mb-4 md:mb-0">
             &copy; {new Date().getFullYear()} Om Aryan. All rights reserved.
           </p>
-          
-          <div class="flex items-center gap-4">
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-              Privacy Policy
-            </a>
-            <span class="text-gray-600">•</span>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-              Terms of Service
-            </a>
-            <span class="text-gray-600">•</span>
-            <a href="#" class="text-gray-400 hover:text-white transition-colors duration-200 text-sm">
-              Sitemap
-            </a>
-          </div>
         </div>
       </div>
     </footer>
