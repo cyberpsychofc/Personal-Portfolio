@@ -51,6 +51,7 @@ const navItems = [
     { label: 'Home', href: '#home' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Education', href: '#education' },
     { label: 'Experience', href: '#experience' },
     //{ label: 'Blog', href: '#blog' },
     { label: 'Contact', href: '#contact' }
@@ -73,12 +74,21 @@ const projects = [
     }
 ];
 
+const education = [
+  {
+    org:'Shri Ramdeobaba College of Engineering and Management',
+    degree:'BTech. Computer Science and Engineering (Data Science)',
+    period:'2022 - Present',
+    grade:'9.08/10',
+  }
+]
 const experiences = [
     {
+    logo: 'IITB_Logo.svg',
     company: 'IIT Bombay',
     position: 'Backend Developer Intern',
     period: 'October 2024 - Present',
-    description: 'Engineered a robust backend system from scratch, enabling seamless user registration and secure OTP authentication, supporting mulitple model architectures.'
+    description: 'Engineered a robust backend system from scratch, enabling seamless user registration and secure OTP authentication, supporting mulitple ML/DL model architectures.'
     }
 ];
 
@@ -577,7 +587,39 @@ let activeSection = 'home';
         </div>
       </div>
     </section>
-  
+    <!-- Education Section -->
+    <section id="education" class="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
+      <div class="container mx-auto px-6">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
+            Educational Journey
+          </div>
+          <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Education</h2>
+        </div>
+        
+        <div class="max-w-4xl mx-auto">
+          {#each education as edu, i}
+            <div 
+              class="relative pl-10 pb-16 {i !== education.length - 1 ? 'border-l-2 border-primary/20' : ''}"
+              in:fly={{ y: 20, delay: i * 150, duration: 500 }}
+            >
+              <div class="absolute left-[-10px] top-0 w-5 h-5 rounded-full bg-primary border-4 border-white dark:border-gray-900"></div>
+              <div class="mb-4">
+                <span class="inline-block px-4 py-2 bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium rounded-full mb-2">
+                  {edu.period}
+                </span>
+              </div>
+              <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:translate-y-[-5px]">
+                <h3 class="text-xl font-bold mb-1">{edu.org}</h3>
+                <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">{edu.degree}</h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">CGPA: <b>{edu.grade}</b></p>
+              </div>
+            </div>
+          {/each}
+        </div>
+      </div>
+    </section>
+
     <!-- Experience Section -->
     <section id="experience" class="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-950">
       <div class="container mx-auto px-6">
@@ -605,7 +647,10 @@ let activeSection = 'home';
               </div>
               <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:translate-y-[-5px]">
                 <h3 class="text-xl font-bold mb-1">{experience.position}</h3>
-                <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">{experience.company}</h4>
+                <div class="flex items-center mb-4">
+                  <img src="{experience.logo}" alt="{experience.company} Logo" class="w-8 h-8 mr-3 rounded-full" />
+                  <h4 class="text-lg text-gray-600 dark:text-gray-300">{experience.company}</h4>
+                </div>
                 <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{experience.description}</p>
               </div>
             </div>
