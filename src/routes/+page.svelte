@@ -309,7 +309,7 @@ let activeSection = 'home';
         <div class="md:w-1/2 flex justify-center">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-full blur-3xl"></div>
-            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-green-600 shadow-2x1">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-green-400 shadow-2x1">
               <img 
                 src="/sudo2.jpg?height=600&width=600" 
                 alt="Om Aryan" 
@@ -402,7 +402,7 @@ let activeSection = 'home';
             </h4>
             <div class="ml-11 flex flex-wrap gap-2">
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Django</span>
-              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Django REST Framework</span>
+              <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Spring Boot</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">FastAPI</span>
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Flask</span>
             </div>
@@ -907,21 +907,21 @@ let activeSection = 'home';
     </section>
   
     <!-- Footer -->
-    <footer class="py-12 bg-gray-900 text-white">
+    <footer class="py-12 bg-gray-900 text-white [@media(prefers-color-scheme:light)]:bg-gray-200 [@media(prefers-color-scheme:light)]:text-black">
       <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-center mb-10">
           <div class="mb-8 md:mb-0 text-center md:text-left">
-            <a href="#home" class="text-3xl font-mono font-bold text-white inline-block relative group">
+            <a href="#home" class="text-3xl font-mono font-bold inline-block relative group">
               <span class="relative z-10">Want to know more?
               </span>
               <span class="absolute bottom-0 left-0 w-full h-3 bg-primary/30 rounded-lg -z-0 group-hover:h-4 transition-all duration-300"></span>
             </a>
-            <p class="text-gray-400 mt-3 max-w-md">Hit me up on my socials to connect and let's collaborate and build something exciting...</p>
+            <p class="text-gray-400 mt-3 max-w-md [@media(prefers-color-scheme:light)]:text-gray-600">Hit me up on my socials to connect and let's collaborate and build something exciting...</p>
           </div>
         </div>
         
         <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-400 text-sm mb-4 md:mb-0">
+          <p class="text-gray-400 text-sm mb-4 md:mb-0 [@media(prefers-color-scheme:light)]:text-gray-500">
             &copy; {new Date().getFullYear()} Om Aryan. All rights reserved.
           </p>
         </div>
@@ -931,7 +931,7 @@ let activeSection = 'home';
 
 <style>
   :root {
-    --color-primary: #02ca3b;
+    --color-primary: #00dc82;
     --color-primary-foreground: #f8fafc;
   }
   
@@ -1078,6 +1078,13 @@ let activeSection = 'home';
       padding: 0.75rem;
     }
   }
+
+  @media (prefers-color-scheme: light) {
+  .tile {
+    background: #ffffff7a;
+  }
+
+}
   
   /* Custom scrollbar */
   ::-webkit-scrollbar {
