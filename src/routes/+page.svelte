@@ -112,6 +112,12 @@ let django_tiles = [
     
   ];
 
+let spring_tiles = [
+    "Spring-Guides-Apps",
+    "DocAnalyzerAI",
+    "logauth"
+];
+
 let lg_tiles = [
   "Content-Engine-Langchain",
   "DocAnalyzerAI"
@@ -120,6 +126,7 @@ let lg_tiles = [
 // Track the index of the tile being hovered over.
 let hoveredIndex = -1;
 let hoveredIndex2 = -1;
+let hoveredIndex3 = -1;
 
 let mobileMenuOpen = false;
 
@@ -127,6 +134,7 @@ let name = '';
 let email = '';
 let message = '';
 let formSubmitted = false;
+let formEmpty = false;
 let formError = false;
 let form;
 
@@ -158,6 +166,11 @@ onMount(() => {
 });
 
 const handleSubmit = async () => {
+    if (!name.trim() || !email.trim() || !message.trim()) {
+      formEmpty = true;
+      return;
+    }
+
     try {
       const result = await emailjs.sendForm(
         EMAILJS_SERVICE_ID,
@@ -165,6 +178,7 @@ const handleSubmit = async () => {
         form,
         EMAILJS_PUBLIC_KEY
       );
+      formEmpty = false;
 
       name = '';
       email = '';
@@ -172,6 +186,7 @@ const handleSubmit = async () => {
       formSubmitted = true;
     } catch (error) {
       formError = true;
+      formEmpty = false;
     }
   };
 
@@ -489,14 +504,14 @@ let activeSection = 'home';
           </div>
           <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">What I Love Working With</h2>
           <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
-            My experience and hands-on experience with cutting-edge technologies for building robust and intelligent softwares.
+            My experience and hands-on experience with technologies and frameworks for building robust and intelligent softwares.
           </p>
         </div>
         
         <div class="space-y-24">
           <!-- Django Section -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div class="order-2 lg:order-1">
+            <div class="order-2">
               <div class="flex items-center mb-6">
                 <div class="w-14 h-14 bg-gradient-to-br from-green-500/20 to-green-500/5 dark:from-green-500/30 dark:to-green-500/10 rounded-2xl flex items-center justify-center mr-4">
                   <img src="/django.svg?height=100&width=100" alt="Django" class="w-8 h-8" />
@@ -511,7 +526,7 @@ let activeSection = 'home';
               
             </div>
             
-            <div class="order-1 lg:order-2 flex justify-center">
+            <div class="order-1 flex justify-center">
               <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-primary/20 rounded-2xl blur-3xl"></div>
                 <div class="relative dark:bg-[#1e293b] text-gray-900 dark:text-gray-200 rounded-2xl shadow-2xl p-0 md:p-5 border border-gray-100 dark:border-gray-700 w-[300px] md:w-[400px]">
@@ -521,6 +536,51 @@ let activeSection = 'home';
                         class="tile {hoveredIndex === index ? 'hovered' : ''} {hoveredIndex >= 0 && index > hoveredIndex ? 'shifted' : ''}"
                         on:mouseenter={() => hoveredIndex = index}
                         on:mouseleave={() => hoveredIndex = -1}
+                      >
+                      <a href="https://github.com/{github_user}/{repo}" target="_blank" rel="noopener">
+                        <img src="https://gh-card.dev/repos/{github_user}/{repo}.svg"
+                        class="dark:invert rounded-2xl" 
+                        alt="GitHub Card" 
+                        />
+                      </a>
+                      </div>
+                    {/each}
+                  </div>
+                </div>
+                <div class="absolute -bottom-6 -right-6 bg-white dark:bg-gray-800 rounded-full p-4 shadow-lg border border-gray-100 dark:border-gray-700 z-10">
+                  <img src="/favicon.png?height=60&width=60" alt="Cyberpsych Logo" class="w-12 h-12" />
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Spring Section -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="order-2 lg:order-1">
+              <div class="flex items-center mb-6">
+                <div class="w-14 h-14 bg-gradient-to-br from-green-300/20 to-green-300/5 dark:from-green-200/30 dark:to-green-200/10 rounded-2xl flex items-center justify-center mr-4">
+                  <img src="/spring.svg?height=100&width=100" alt="Spring Boot" class="w-8 h-8" />
+                </div>
+                <h3 class="text-2xl font-bold">Spring Boot</h3>
+              </div>
+              
+              <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+                I’m actively learning to build scalable, enterprise-grade applications with Spring Boot. Its structured approach, rich ecosystem, and seamless integration capabilities make it a strong foundation for backend development. I value the opportunity to deepen my skills through hands-on experience with real-world projects.
+              </p>
+              
+              
+            </div>
+            
+            <div class="order-1 lg:order-2 flex justify-center">
+              <div class="relative">
+                <div class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-primary/20 rounded-2xl blur-3xl"></div>
+                <div class="relative dark:bg-[#1e293b] text-gray-900 dark:text-gray-200 rounded-2xl shadow-2xl p-0 md:p-5 border border-gray-100 dark:border-gray-700 w-[300px] md:w-[400px]">
+                  <div class="drawer">
+                    {#each spring_tiles as repo, index}
+                      <div 
+                        class="tile {hoveredIndex2 === index ? 'hovered' : ''} {hoveredIndex2 >= 0 && index > hoveredIndex2 ? 'shifted' : ''}"
+                        on:mouseenter={() => hoveredIndex2 = index}
+                        on:mouseleave={() => hoveredIndex2 = -1}
                       >
                       <a href="https://github.com/{github_user}/{repo}" target="_blank" rel="noopener">
                         <img src="https://gh-card.dev/repos/{github_user}/{repo}.svg"
@@ -563,9 +623,9 @@ let activeSection = 'home';
                   <div class="drawer">
                     {#each lg_tiles as repo, index}
                       <div 
-                        class="tile {hoveredIndex2 === index ? 'hovered' : ''} {hoveredIndex2 >= 0 && index > hoveredIndex2 ? 'shifted' : ''}"
-                        on:mouseenter={() => hoveredIndex2 = index}
-                        on:mouseleave={() => hoveredIndex2 = -1}
+                        class="tile {hoveredIndex3 === index ? 'hovered' : ''} {hoveredIndex3 >= 0 && index > hoveredIndex3 ? 'shifted' : ''}"
+                        on:mouseenter={() => hoveredIndex3 = index}
+                        on:mouseleave={() => hoveredIndex3 = -1}
                       >
                       <a href="https://github.com/{github_user}/{repo}" target="_blank" rel="noopener">
                         <img src="https://gh-card.dev/repos/{github_user}/{repo}.svg"
@@ -856,6 +916,18 @@ let activeSection = 'home';
                 <p class="text-red-700 dark:text-red-400">Message was not sent, please try again later!</p>
               </div>
             {/if}
+
+            {#if formEmpty}
+              <div class="bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-300 p-6 rounded-xl mb-6 border border-red-200 dark:border-red-800" transition:fade>
+                <div class="flex items-center mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600 dark:text-red-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <h4 class="text-lg font-bold text-red-800 dark:text-red-300">Failed to send</h4>
+                </div>
+                <p class="text-red-700 dark:text-red-400">To proceed, please fill in the necessary fields.</p>
+              </div>
+            {/if}
             
             <form bind:this={form} on:submit|preventDefault={handleSubmit} class="space-y-6">
               <div>
@@ -1039,7 +1111,7 @@ let activeSection = 'home';
     padding: 1rem;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    margin-top: -50px;      /* Overlap tiles for the drawer effect */
+    margin-top: -60px;      /* Overlap tiles for the drawer effect */
     transition: transform 0.3s ease, margin-top 0.3s ease;
     position: relative;
     z-index: 1;
@@ -1076,6 +1148,7 @@ let activeSection = 'home';
     }
     .tile {
       padding: 0.75rem;
+      margin-top: -36px;
     }
   }
 
