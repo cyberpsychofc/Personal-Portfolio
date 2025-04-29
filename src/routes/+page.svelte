@@ -514,7 +514,7 @@ let activeSection = 'home';
             <div class="order-1 lg:order-2 flex justify-center">
               <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-br from-green-500/20 to-primary/20 rounded-2xl blur-3xl"></div>
-                <div class="relative dark:bg-[#1e293b] text-gray-900 dark:text-gray-200 rounded-2xl shadow-2xl p-5 border border-gray-100 dark:border-gray-700 w-[300px] md:w-[400px]">
+                <div class="relative dark:bg-[#1e293b] text-gray-900 dark:text-gray-200 rounded-2xl shadow-2xl p-0 md:p-5 border border-gray-100 dark:border-gray-700 w-[300px] md:w-[400px]">
                   <div class="drawer">
                     {#each django_tiles as repo, index}
                       <div 
@@ -559,7 +559,7 @@ let activeSection = 'home';
             <div class="order-1 flex justify-center">
               <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-primary/20 rounded-2xl blur-3xl"></div>
-                <div class="relative dark:bg-[#1e293b] text-gray-900 dark:text-gray-200 rounded-2xl shadow-2xl p-5 border border-gray-100 dark:border-gray-700 w-[300px] md:w-[400px]">
+                <div class="relative dark:bg-[#1e293b] text-gray-900 dark:text-gray-200 rounded-2xl shadow-2xl p-0 md:p-5 border border-gray-100 dark:border-gray-700 w-[300px] md:w-[400px]">
                   <div class="drawer">
                     {#each lg_tiles as repo, index}
                       <div 
