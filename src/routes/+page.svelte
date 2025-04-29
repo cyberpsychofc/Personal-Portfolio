@@ -309,7 +309,7 @@ let activeSection = 'home';
         <div class="md:w-1/2 flex justify-center">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-full blur-3xl"></div>
-            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white dark:border-green-400 shadow-2x1">
+            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-green-200 dark:border-green-400 shadow-2x1">
               <img 
                 src="/sudo2.jpg?height=600&width=600" 
                 alt="Om Aryan" 
@@ -481,7 +481,7 @@ let activeSection = 'home';
     </section>
   
     <!-- Technology Sections -->
-    <section class="py-20">
+    <section id="projects" class="py-20">
       <div class="container mx-auto px-6">
         <div class="text-center max-w-3xl mx-auto mb-16">
           <div class="inline-block px-3 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-4">
