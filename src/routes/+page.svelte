@@ -137,6 +137,7 @@ let formSubmitted = false;
 let formEmpty = false;
 let formError = false;
 let form;
+let isSpam = false;
 
 let darkMode = false;
 
@@ -168,6 +169,10 @@ onMount(() => {
 const handleSubmit = async () => {
     if (!name.trim() || !email.trim() || !message.trim()) {
       formEmpty = true;
+      return;
+    }
+    if (email=='aryan2003k@gmail.com'){
+      isSpam = true;
       return;
     }
 
@@ -916,6 +921,18 @@ let activeSection = 'home';
                   <h4 class="text-lg font-bold text-red-800 dark:text-red-300">Error</h4>
                 </div>
                 <p class="text-red-700 dark:text-red-400">Message was not sent, please try again later!</p>
+              </div>
+            {/if}
+
+            {#if isSpam}
+              <div class="bg-red-50 dark:bg-red-900/30 text-red-800 dark:text-red-300 p-6 rounded-xl mb-6 border border-red-200 dark:border-red-800" transition:fade>
+                <div class="flex items-center mb-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600 dark:text-red-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <h4 class="text-lg font-bold text-red-800 dark:text-red-300">Possible Spam</h4>
+                </div>
+                <p class="text-red-700 dark:text-red-400">Please provide only your own accurate information.</p>
               </div>
             {/if}
 
