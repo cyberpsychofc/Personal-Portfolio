@@ -304,7 +304,7 @@ let activeSection = 'home';
             Building <br /><span class="text-primary dark:text-primary-foreground relative"><span class="wrap">{text}</span><span class="absolute bottom-2 left-0 w-full h-3 bg-primary/20 dark:bg-primary/30 -z-10 rounded-lg "></span><br /></span> systems for the modern age
           </h1>
           <p class="text-xl mb-2 text-black dark:text-white max-w-lg leading-relaxed">
-            Hello! I'm <i class="font-serif">Om Aryan</i></p>
+            Hello! I'm <b>Om Aryan</b></p>
           <p class="text-base mb-8 text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
             A Passionate programmer with a love for challenges and problem-solving in building solutions. Skilled in Java and Python always eager to expand my knowledge and skills in Deep Learning and Software Development.
           </p>
