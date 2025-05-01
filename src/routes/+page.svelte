@@ -183,7 +183,9 @@ const handleSubmit = async () => {
         form,
         EMAILJS_PUBLIC_KEY
       );
+      formError = false;
       formEmpty = false;
+      isSpam = false;
 
       name = '';
       email = '';
@@ -869,7 +871,7 @@ let activeSection = 'home';
                 </div>
                 <div>
                   <div class="text-sm text-gray-500 dark:text-gray-400 mb-1">Location</div>
-                  <span class="text-lg font-medium">Nagpur, Maharashtra</span>
+                  <span class="text-lg font-medium">Navi Mumbai, Maharashtra, India</span>
                 </div>
               </div>
             </div>
