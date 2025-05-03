@@ -1196,7 +1196,7 @@ let activeSection = 'home';
   }
   .highlight{
     background: linear-gradient(transparent 40%, #eaecff 100%);
-    color: #00ff95;
+    color: #00dc82;
     position: relative;
     border-radius: 5px;
   }
