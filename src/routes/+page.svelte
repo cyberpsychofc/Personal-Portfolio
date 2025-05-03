@@ -1023,9 +1023,14 @@ let activeSection = 'home';
   </div>
 
 <style>
+  
   :root {
     --color-primary: #00dc82;
     --color-primary-foreground: #f8fafc;
+  }
+  ::selection {
+  color: #00ff95;
+  background: #001148;
   }
   
   .dark {
