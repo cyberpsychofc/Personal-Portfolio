@@ -1038,8 +1038,9 @@ let activeSection = 'home';
     color: #ffffff;
     position: relative;
     border-radius: 1px;
-    animation: flicker 2s linear forwards;
+    animation: flicker 3s linear forwards;
     animation-delay: 1s;
+    filter: brightness(0.3);
   }
   .highlight::after {
     content: '';
