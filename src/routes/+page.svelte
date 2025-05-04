@@ -989,7 +989,7 @@ let activeSection = 'home';
               
               <button 
                 type="submit"
-                class="w-full px-6 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:translate-y-[-2px] font-medium"
+                class="w-full px-6 py-3 bg-primary text-white rounded-xl hover:bg-primary/90 transition-all duration-300 shadow-lg hover:shadow-xl hover:translate-y-[-2px] font-medium active:scale-95"
               >
                 Send Message
               </button>
