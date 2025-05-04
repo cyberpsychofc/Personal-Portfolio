@@ -1038,12 +1038,59 @@ let activeSection = 'home';
     color: #ffffff;
     position: relative;
     border-radius: 1px;
+    animation: flicker 2s linear forwards;
+    animation-delay: 1s;
   }
   .highlight::after {
     content: '';
     position: absolute;
     bottom: 0;
   }
+  @keyframes flicker {
+    0% {
+      filter: brightness(0);
+      animation-timing-function: step-end;
+    }
+    2% {
+      filter: brightness(0.8);
+      animation-timing-function: step-end;
+    }
+    3% {
+      filter: brightness(0);
+      animation-timing-function: step-end;
+    }
+    5% {
+      filter: brightness(0.6);
+      animation-timing-function: step-end;
+    }
+    6% {
+      filter: brightness(0);
+      animation-timing-function: step-end;
+    }
+    8% {
+      filter: brightness(0.9);
+      animation-timing-function: step-end;
+    }
+    10% {
+      filter: brightness(0);
+      animation-timing-function: step-end;
+    }
+    15% {
+      filter: brightness(1);
+      animation-timing-function: step-end;
+    }
+    20% {
+      filter: brightness(0.3);
+      animation-timing-function: step-end;
+    }
+    22% {
+      filter: brightness(1);
+    }
+    100% {
+      filter: brightness(1);
+    }
+  }
+
   
   .dark {
     --color-primary: #818cf8;
