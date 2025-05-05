@@ -301,7 +301,7 @@ let activeSection = 'home';
     </header>
   
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 md:pt-40 md:pb-32 relative overflow-hidden">
+    <section id="home" class="pt-32 pb-20 md:pl-10 md:pt-40 md:pb-32 relative overflow-hidden">
       <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
         <div class="md:w-1/2 mb-12 md:mb-0">
           <div class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-6">
@@ -310,9 +310,9 @@ let activeSection = 'home';
           <h1 class="text-4xl md:text-5xl lg:text-6xl font-mono font-bold mb-6 leading-tight">
             Building <br /><span class="text-primary dark:text-primary-foreground relative"><span class="wrap">{text}</span><span class="absolute bottom-2 left-0 w-full h-3 bg-primary/20 dark:bg-primary/30 -z-10 rounded-lg "></span><br /></span> systems for the modern age
           </h1>
-          <p class="text-xl mb-2 text-black dark:text-white max-w-lg leading-relaxed">
+          <p class="text-2xl mb-2 text-black dark:text-white max-w-lg leading-relaxed">
             Hi! I'm <b class="highlight">Om Aryan</b></p>
-          <p class="text-base mb-8 text-gray-600 dark:text-gray-400 max-w-lg leading-relaxed">
+          <p class="text-base mb-8 text-gray-600 dark:bg-gradient-to-bl from-green-100 to-green-400 dark:bg-clip-text dark:text-transparent leading-relaxed pt-3">
             A Passionate programmer with a love for challenges and problem-solving in building solutions. Skilled in Java and Python always eager to expand my knowledge and skills in Deep Learning and Software Development.
           </p>
           <div class="flex flex-wrap gap-4">
@@ -1247,6 +1247,8 @@ let activeSection = 'home';
     color: #00dc82;
     position: relative;
     border-radius: 5px;
+    filter: brightness(1);
+    animation: none;
   }
   ::selection {
     color: #00084c;
