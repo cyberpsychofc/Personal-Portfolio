@@ -519,7 +519,7 @@ let activeSection = 'home';
         
         <div class="space-y-24">
           <!-- Django Section -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="grid grid-cols-1 md:pr-10 lg:grid-cols-2 gap-12 items-center">
             <div class="order-2">
               <div class="flex items-center mb-6">
                 <div class="w-14 h-14 bg-gradient-to-br from-green-500/20 to-green-500/5 dark:from-green-500/30 dark:to-green-500/10 rounded-2xl flex items-center justify-center mr-4">
@@ -564,7 +564,7 @@ let activeSection = 'home';
           </div>
           
           <!-- Spring Section -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="grid md:pl-10 grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div class="order-2 lg:order-1">
               <div class="flex items-center mb-6">
                 <div class="w-14 h-14 bg-gradient-to-br from-green-300/20 to-green-300/5 dark:from-green-200/30 dark:to-green-200/10 rounded-2xl flex items-center justify-center mr-4">
@@ -609,7 +609,7 @@ let activeSection = 'home';
           </div>
           
           <!-- Langchain Section -->
-          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <div class="grid grid-cols-1 md:pr-10 lg:grid-cols-2 gap-12 items-center">
             <div class="order-2">
               <div class="flex items-center mb-6">
                 <div class="w-14 h-14 bg-gradient-to-br from-amber-400/20 to-amber-400/10 dark:from-amber-400/30 dark:to-amber-400/20 rounded-2xl flex items-center justify-center mr-4">
@@ -1000,7 +1000,7 @@ let activeSection = 'home';
     </section>
   
     <!-- Footer -->
-    <footer class="py-12 bg-gray-900 text-white [@media(prefers-color-scheme:light)]:bg-gray-200 [@media(prefers-color-scheme:light)]:text-black">
+    <footer class="py-12 md:pl-10 bg-gray-900 text-white [@media(prefers-color-scheme:light)]:bg-gray-200 [@media(prefers-color-scheme:light)]:text-black">
       <div class="container mx-auto px-6">
         <div class="flex flex-col md:flex-row justify-between items-center mb-10">
           <div class="mb-8 md:mb-0 text-center md:text-left">
