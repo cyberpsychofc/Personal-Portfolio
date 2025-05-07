@@ -894,6 +894,11 @@ let activeSection = 'home';
                     <image href="/x.svg" width="18" height="18" />
                   </svg>
                 </a>
+                <a href="https://devfolio.co/@cyberpsych" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors duration-200 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="text-primary dark:text-primary-foreground group-hover:scale-110 transition-transform duration-200" viewBox="0 0 16 16">
+                    <image href="/devf.svg" width="18" height="18" />
+                  </svg>
+                </a>
                 
               </div>
             </div>
