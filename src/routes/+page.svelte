@@ -466,7 +466,7 @@ let activeSection = 'home';
                 <h3 class="text-xl font-bold mb-1 text-shadow-2xs dark:text-shadow-2xs">{experience.position}</h3>
                 <div class="flex items-center mb-4">
                   <img src="{experience.logo}" alt="{experience.company} Logo" class="w-8 h-8 mr-3 rounded-full" />
-                  <h4 class="text-lg text-gray-600 dark:text-gray-300 text-shadow-2xs dark:text-shadow-2xs">{experience.company}</h4>
+                  <h4 class="text-lg text-gray-600 dark:text-gray-300 text-shadow-2xs dark:text-shadow-2xs  ">{experience.company}</h4>
                 </div>
                 <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-shadow-2xs dark:text-shadow-2xs">{experience.description}</p>
               </div>
@@ -1041,6 +1041,7 @@ let activeSection = 'home';
   :root {
     --color-primary: #00dc82;
     --color-primary-foreground: #f8fafc;
+    scroll-behavior: smooth;
   }
   ::selection {
   color: #00ff95;
@@ -1190,18 +1191,6 @@ let activeSection = 'home';
   
   .focus\:border-primary:focus {
     border-color: var(--color-primary);
-  }
-  
-  html {
-    scroll-behavior: smooth;
-  }
-  
-  body {
-    font-family: 'Inter', sans-serif;
-  }
-  
-  .font-display {
-    font-family: 'Playfair Display', serif;
   }
   
   section {
