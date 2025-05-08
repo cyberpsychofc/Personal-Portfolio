@@ -363,12 +363,12 @@ let activeSection = 'home';
             Technical Expertise
           </div>
           <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Skills & Technologies</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-400 dark:bg-clip-text dark:text-transparent leading-relaxed">
             As I continue learning, I work with backend technologies and AI frameworks to build scalable and intelligent systems that tackle complex problems.
           </p>
         </div>
         
-        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:pr-10 md:pl-10">
           <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
             <h4 class="text-lg font-bold mb-3 flex items-center">
               <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
@@ -445,7 +445,7 @@ let activeSection = 'home';
             Professional Journey
           </div>
           <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Work Experience</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-400 dark:bg-clip-text dark:text-transparent leading-relaxed">
             A track record of success in developing innovative solutions across various industries and technologies.
           </p>
         </div>
@@ -463,12 +463,12 @@ let activeSection = 'home';
                 </span>
               </div>
               <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:translate-y-[-5px]">
-                <h3 class="text-xl font-bold mb-1">{experience.position}</h3>
+                <h3 class="text-xl font-bold mb-1 text-shadow-2xs dark:text-shadow-2xs">{experience.position}</h3>
                 <div class="flex items-center mb-4">
                   <img src="{experience.logo}" alt="{experience.company} Logo" class="w-8 h-8 mr-3 rounded-full" />
-                  <h4 class="text-lg text-gray-600 dark:text-gray-300">{experience.company}</h4>
+                  <h4 class="text-lg text-gray-600 dark:text-gray-300 text-shadow-2xs dark:text-shadow-2xs">{experience.company}</h4>
                 </div>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">{experience.description}</p>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-shadow-2xs dark:text-shadow-2xs">{experience.description}</p>
               </div>
             </div>
           {/each}
@@ -496,12 +496,12 @@ let activeSection = 'home';
             Featured Work
           </div>
           <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Projects in Action</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-400 dark:bg-clip-text dark:text-transparent leading-relaxed">
             Explore a selection of my most significant projects, showcasing my expertise in backend development and AI solutions.
           </p>
         </div>
         
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10 md:pr-10 md:pl-10">
           {#each projects as project, i}
             <div 
               class="bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden group hover:shadow-2xl transition-all duration-300 hover:translate-y-[-5px]"
@@ -565,7 +565,7 @@ let activeSection = 'home';
             Core Technologies
           </div>
           <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">What I Love Working With</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-400 dark:bg-clip-text dark:text-transparent leading-relaxed">
             My experience and hands-on experience with technologies and frameworks for building robust and intelligent softwares.
           </p>
         </div>
@@ -581,7 +581,7 @@ let activeSection = 'home';
                 <h3 class="text-2xl font-bold">Django</h3>
               </div>
               
-              <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-200 dark:bg-clip-text dark:text-transparent mb-8 leading-relaxed">
                 I love building scalable and robust web applications using Django. Its clean design, powerful ORM, and built-in admin make it my go-to framework for quickly turning ideas into production-ready systems. From developing APIs to managing databases and user authentication, I enjoy working with every part of the Django ecosystem.
               </p>
               
@@ -626,7 +626,7 @@ let activeSection = 'home';
                 <h3 class="text-2xl font-bold">Spring Boot</h3>
               </div>
               
-              <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-200 dark:bg-clip-text dark:text-transparent mb-8 leading-relaxed">
                 I’m actively learning to build scalable, enterprise-grade applications with Spring Boot. Its structured approach, rich ecosystem, and seamless integration capabilities make it a strong foundation for backend development. I value the opportunity to deepen my skills through hands-on experience with real-world projects.
               </p>
               
@@ -671,7 +671,7 @@ let activeSection = 'home';
                 <h3 class="text-2xl font-bold">Langchain</h3>
               </div>
               
-              <p class="text-gray-600 dark:text-gray-300 mb-8 leading-relaxed">
+              <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-yellow-100 dark:to-yellow-200 dark:bg-clip-text dark:text-transparent mb-8 leading-relaxed">
                 I'm equally passionate about leveraging the power of Large Language Models to build sophisticated AI applications with Langchain's flexible framework for LLM orchestration. Whether it's chaining prompts, integrating with vector databases, or deploying document-based question answering systems, I enjoy pushing the limits of what’s possible with AI and automation.
               </p>
               
@@ -732,9 +732,9 @@ let activeSection = 'home';
                 </span>
               </div>
               <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:translate-y-[-5px]">
-                <h3 class="text-xl font-bold mb-1">{edu.org}</h3>
-                <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4">{edu.degree}</h4>
-                <p class="text-gray-600 dark:text-gray-400 leading-relaxed">CGPA: <b>{edu.grade}</b></p>
+                <h3 class="text-xl font-bold mb-1 text-shadow-2xs dark:text-shadow-2xs">{edu.org}</h3>
+                <h4 class="text-lg text-gray-600 dark:text-gray-300 mb-4 text-shadow-2xs dark:text-shadow-2xs">{edu.degree}</h4>
+                <p class="text-gray-600 dark:text-gray-400 leading-relaxed text-shadow-2xs dark:text-shadow-2xs">CGPA: <b>{edu.grade}</b></p>
               </div>
             </div>
           {/each}
@@ -827,7 +827,7 @@ let activeSection = 'home';
             Let's Connect
           </div>
           <h2 class="text-3xl md:text-4xl font-mono font-bold mb-6">Get In Touch</h2>
-          <p class="text-gray-600 dark:text-gray-400 leading-relaxed">
+          <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-400 dark:bg-clip-text dark:text-transparent leading-relaxed">
             Have a project in mind or want to discuss potential opportunities? I'd love to hear from you.
           </p>
         </div>
