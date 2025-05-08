@@ -333,12 +333,14 @@ let activeSection = 'home';
         <div class="md:w-1/2 flex justify-center">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-full blur-3xl"></div>
-            <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-green-200 dark:border-green-400 shadow-2x1">
-              <img 
-                src="/sudo2.jpg?height=600&width=600" 
-                alt="Om Aryan" 
-                class="w-full h-full object-cover"
-              />
+            <div class="gradient-border relative rounded-full w-64 h-64 md:w-80 md:h-80 shadow-2xl">
+              <div class="overflow-hidden rounded-full w-full h-full">
+                <img
+                  src="/sudo2.jpg?height=600&width=600"
+                  alt="Om Aryan"
+                  class="w-full h-full object-cover"
+                />
+              </div>
             </div>
             <!--
             <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg">
@@ -1096,8 +1098,36 @@ let activeSection = 'home';
       filter: brightness(1);
     }
   }
-
   
+.gradient-border {
+    --borderWidth: 4px;
+    position: relative;
+    border-radius: 50%;
+    background: transparent;
+  }
+
+.gradient-border::after {
+  content: '';
+  position: absolute;
+  top: calc(-1 * var(--borderWidth));
+  left: calc(-1 * var(--borderWidth));
+  width: calc(100% + var(--borderWidth) * 2);
+  height: calc(100% + var(--borderWidth) * 2);
+  border-radius: 50%;
+  background: linear-gradient(
+    210deg,
+    #00ff95,#004528
+  );
+  background-size: 300% 300%;
+  transform-origin: center center;
+  animation: animatedgradient 4s ease infinite;
+  z-index: -1;   
+}
+
+@keyframes animatedgradient {
+  to { transform: rotate(360deg); }
+  }
+
   .dark {
     --color-primary: #818cf8;
     --color-primary-foreground: #f8fafc;
@@ -1244,24 +1274,40 @@ let activeSection = 'home';
   }
 
   @media (prefers-color-scheme: light) {
-  .tile {
-    background: #ffffff7a;
+    .tile {
+      background: #ffffff7a;
+    }
+    .highlight{
+      background: linear-gradient(transparent 40%, #eaecff 100%);
+      color: #00dc82;
+      position: relative;
+      border-radius: 5px;
+      filter: brightness(1);
+      animation: none;
+    }
+    ::selection {
+      color: #00084c;
+      background: #00ff95;
+    }
+    .gradient-border::after {
+      content: '';
+      position: absolute;
+      top: calc(-1 * var(--borderWidth));
+      left: calc(-1 * var(--borderWidth));
+      width: calc(100% + var(--borderWidth) * 2);
+      height: calc(100% + var(--borderWidth) * 2);
+      border-radius: 50%;
+      background: linear-gradient(
+        60deg,
+        #00ff95,#ffffff
+      );
+      background-size: 300% 300%;
+      transform-origin: center center;
+      animation: animatedgradient 2s ease infinite;
+      z-index: -1;
+    }
   }
-  .highlight{
-    background: linear-gradient(transparent 40%, #eaecff 100%);
-    color: #00dc82;
-    position: relative;
-    border-radius: 5px;
-    filter: brightness(1);
-    animation: none;
-  }
-  ::selection {
-    color: #00084c;
-    background: #00ff95;
-  }
-}
   
-  /* Custom scrollbar */
   ::-webkit-scrollbar {
     width: 10px;
   }
