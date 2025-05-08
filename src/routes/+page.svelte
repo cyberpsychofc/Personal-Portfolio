@@ -1020,11 +1020,18 @@ let activeSection = 'home';
           </div>
         </div>
         
-        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p class="text-gray-400 text-sm mb-4 md:mb-0 [@media(prefers-color-scheme:light)]:text-gray-500">
+        <div class="border-t border-gray-800 pt-8 flex flex-col-reverse md:flex-row justify-between items-center">
+          <p class="text-gray-400 text-sm mt-4 md:mt-0 [@media(prefers-color-scheme:light)]:text-gray-500">
             &copy; {new Date().getFullYear()} Om Aryan. All rights reserved.
           </p>
-        </div>
+        
+          <p class="mb-4 md:mb-0 md:pr-10 flex items-center text-gray-400 text-sm [@media(prefers-color-scheme:light)]:text-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 mt-1 md:mt-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 5h16a1 1 0 011 1v10a1 1 0 01-1 1H4a1 1 0 01-1-1V6a1 1 0 011-1zm16 12H4m6 0v2m4-2v2" />
+            </svg>
+            Theme adapts to your system settings.
+          </p>
+        </div>  
       </div>
     </footer>
   </div>
