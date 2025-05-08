@@ -369,7 +369,7 @@ let activeSection = 'home';
         </div>
         
         <div class="mt-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:pr-10 md:pl-10">
-          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 transition-all duration-400 hover:translate-y-[-7px]">
             <h4 class="text-lg font-bold mb-3 flex items-center">
               <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -386,7 +386,7 @@ let activeSection = 'home';
               
             </div>
           </div>
-          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 transition-all duration-400 hover:translate-y-[-7px]">
             <h4 class="text-lg font-bold mb-3 flex items-center">
               <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -402,7 +402,7 @@ let activeSection = 'home';
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Redis</span>
             </div>
           </div>
-          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 transition-all duration-400 hover:translate-y-[-7px]">
             <h4 class="text-lg font-bold mb-3 flex items-center">
               <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -417,7 +417,7 @@ let activeSection = 'home';
               <span class="px-3 py-1 bg-gray-100 dark:bg-gray-700 rounded-full text-sm">Amazon Web Services</span>
             </div>
           </div>
-          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700">
+          <div class="bg-white/50 dark:bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-200 dark:border-gray-700 transition-all duration-400 hover:translate-y-[-7px]">
             <h4 class="text-lg font-bold mb-3 flex items-center">
               <span class="w-8 h-8 rounded-full bg-primary/10 flex items-center justify-center mr-3">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
