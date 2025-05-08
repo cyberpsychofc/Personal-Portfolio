@@ -1044,7 +1044,7 @@ let activeSection = 'home';
     position: relative;
     border-radius: 1px;
     animation: flicker 3s linear forwards;
-    animation-delay: 1s;
+    animation-delay: 1.5s;
     filter: brightness(0.3);
   }
   .highlight::after {
