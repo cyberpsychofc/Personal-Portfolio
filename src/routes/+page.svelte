@@ -115,7 +115,8 @@ let django_tiles = [
 let spring_tiles = [
     "Spring-Guides-Apps",
     "DocAnalyzerAI",
-    "logauth"
+    "logauth",
+    "Mini-Search-Engine"
 ];
 
 let lg_tiles = [
