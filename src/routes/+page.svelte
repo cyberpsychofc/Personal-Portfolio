@@ -86,9 +86,9 @@ const experiences = [
     {
     logo: 'IITB_Logo.svg',
     company: 'IIT Bombay',
-    position: 'Backend Developer Intern',
+    position: 'Research Intern',
     period: 'October 2024 - Present',
-    description: 'Engineered a robust backend system from scratch, enabling seamless user registration and secure OTP authentication, supporting mulitple ML/DL model architectures.'
+    description: 'Engineered a backend system for "Predict Xplore Tool" from scratch, enabling seamless user registration and secure OTP authentication. Incorporated multiple ML/DL like YOLO and etc. inference support into the software.'
     }
 ];
 
