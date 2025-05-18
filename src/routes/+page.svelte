@@ -467,7 +467,7 @@ let activeSection = 'home';
                 <div class="flex items-center mb-4 md:mb-2 justify-between">
                   <h3 class="text-xl font-bold text-shadow-2xs dark:text-shadow-2xs">{experience.position}</h3>
                   <a href="./{experience.certificate}" target="_blank">
-                  <img src="cert.svg" alt="experience certificate" class="w-10 h-10 mr-5 ml-3 shadow:lg transition-shadow duration-100 hover:drop-shadow-[0_0_12px_#00dc82] dark:hover:drop-shadow-[0_0_12px_#00dc82]" />
+                  <img src="cert.svg" alt="experience certificate" class="w-10 h-10 mr-5 ml-3 shadow:lg transition-shadow duration-100 hover:drop-shadow-[0_0_12px_#00dc82] dark:hover:drop-shadow-[0_0_12px_#00dc82] hidden" />
                   </a>
                 </div>
                 <div class="flex items-center mb-4">
