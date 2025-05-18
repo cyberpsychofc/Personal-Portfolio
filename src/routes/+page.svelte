@@ -89,7 +89,7 @@ const experiences = [
     position: 'Research Intern',
     period: 'October 2024 - Present',
     description: 'Engineered a backend system for "Predict Xplore Tool" from scratch, enabling seamless user registration and secure OTP authentication. Incorporated multiple ML/DL like YOLO and etc. inference support into the software.',
-    certification: 'resume.pdf'
+    certificate: '' // add certificate filename when available
     }
 ];
 
@@ -464,9 +464,11 @@ let activeSection = 'home';
                 </span>
               </div>
               <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:translate-y-[-5px]">
-                <div class="flex items-center mb-4 justify-between">
+                <div class="flex items-center mb-4 md:mb-2 justify-between">
                   <h3 class="text-xl font-bold text-shadow-2xs dark:text-shadow-2xs">{experience.position}</h3>
+                  <a href="./{experience.certificate}" target="_blank">
                   <img src="cert.svg" alt="experience certificate" class="w-10 h-10 mr-5 ml-3 shadow:lg transition-shadow duration-100 hover:drop-shadow-[0_0_12px_#00dc82] dark:hover:drop-shadow-[0_0_12px_#00dc82]" />
+                  </a>
                 </div>
                 <div class="flex items-center mb-4">
                   <img src="{experience.logo}" alt="{experience.company} Logo" class="w-8 h-8 mr-3 rounded-full" />
