@@ -88,7 +88,8 @@ const experiences = [
     company: 'IIT Bombay',
     position: 'Research Intern',
     period: 'October 2024 - Present',
-    description: 'Engineered a backend system for "Predict Xplore Tool" from scratch, enabling seamless user registration and secure OTP authentication. Incorporated multiple ML/DL like YOLO and etc. inference support into the software.'
+    description: 'Engineered a backend system for "Predict Xplore Tool" from scratch, enabling seamless user registration and secure OTP authentication. Incorporated multiple ML/DL like YOLO and etc. inference support into the software.',
+    certification: 'resume.pdf'
     }
 ];
 
@@ -462,8 +463,11 @@ let activeSection = 'home';
                   {experience.period}
                 </span>
               </div>
-              <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:translate-y-[-5px]">
-                <h3 class="text-xl font-bold mb-1 text-shadow-2xs dark:text-shadow-2xs">{experience.position}</h3>
+              <div class="bg-white dark:bg-gray-800 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 hover:translate-y-[-5px]">
+                <div class="flex items-center mb-4 justify-between">
+                  <h3 class="text-xl font-bold text-shadow-2xs dark:text-shadow-2xs">{experience.position}</h3>
+                  <img src="cert.svg" alt="experience certificate" class="w-10 h-10 mr-5 ml-3 shadow:lg transition-shadow duration-100 hover:drop-shadow-[0_0_12px_#00dc82] dark:hover:drop-shadow-[0_0_12px_#00dc82]" />
+                </div>
                 <div class="flex items-center mb-4">
                   <img src="{experience.logo}" alt="{experience.company} Logo" class="w-8 h-8 mr-3 rounded-full" />
                   <h4 class="text-lg text-gray-600 dark:text-gray-300 text-shadow-2xs dark:text-shadow-2xs  ">{experience.company}</h4>
