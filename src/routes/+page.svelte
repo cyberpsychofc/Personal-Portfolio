@@ -672,7 +672,7 @@ let activeSection = 'home';
               </div>
               
               <p class="bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-yellow-100 dark:to-yellow-200 dark:bg-clip-text dark:text-transparent mb-8 leading-relaxed">
-                I'm equally passionate about leveraging the power of Large Language Models to build sophisticated AI applications with Langchain's flexible framework for LLM orchestration. Whether it's chaining prompts, integrating with vector databases, or deploying document-based question answering systems, I enjoy pushing the limits of what’s possible with AI and automation.
+                I'm equally passionate about exploring the capabilities of Retrieval-Augmented Generation (RAG) systems to build intelligent, context-aware AI applications. Whether it's optimizing information retrieval pipelines, integrating with vector databases, or deploying document-based question answering systems.
               </p>
               
               
