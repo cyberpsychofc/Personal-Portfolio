@@ -58,20 +58,20 @@ const navItems = [
 ];
 
 const projects = [
+  {
+    title: 'Mini Search Engine',
+    description: 'A miniature search engine that uses AI to enhance net surfing and information retrieval.',
+    technologies: ['Spring Boot', 'React', 'Docker'],
+    image: '/mse.png?height=300&width=500',
+    link: 'https://mini-search-engine.vercel.app'
+    },
     {
     title: 'Bio Insight Pro',
     description: 'AI-powered tool designed to assist doctors and researchers by analyzing large volumes of medical and research documents.',
     technologies: ['Django', 'Langchain', 'OpenAI', 'React', 'Pinecone'],
     image: '/bip.png',
     link: 'https://bioinsight.pro'
-    },
-    {
-    title: 'CyberpscyhAI',
-    description: 'AI Agent powered integrated X (formerly ~Twitter) bot which tweets interesting stuff.',
-    technologies: ['Flask', 'Docker', 'Twitter API'],
-    image: '/cyberpsychai.png?height=300&width=500',
-    link: 'https://x.com/CyberpsychAI'
-    }
+    }    
 ];
 
 const education = [
