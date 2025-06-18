@@ -79,7 +79,7 @@ const education = [
     org:'Shri Ramdeobaba College of Engineering and Management',
     degree:'BTech. Computer Science and Engineering (Data Science)',
     period:'2022 - Present',
-    grade:'9.08/10',
+    grade:'8.97/10',
   }
 ]
 const experiences = [
@@ -907,7 +907,11 @@ let activeSection = 'home';
                     <image href="/devf.svg" width="18" height="18" />
                   </svg>
                 </a>
-                
+                <a href="https://leetcode.com/u/cyberpsych" class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center hover:bg-primary/20 transition-colors duration-200 group">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="23" height="28" fill="currentColor" class="text-primary dark:text-primary-foreground group-hover:scale-110 transition-transform duration-200" viewBox="0 0 16 16">
+                    <image href="/leet.svg" width="17" height="18" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>
