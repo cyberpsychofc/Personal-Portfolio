@@ -319,10 +319,13 @@ let activeSection = 'home';
           </div>
         </div>
         <div class="md:w-1/2 order-2 md:order-1">
-          <div class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-6">
-            Software Developer
+          <div class="flex justify-center md:justify-start mb-4">
+            <div class="text-center inline-block px-4 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-6">
+              Software Developer
+            </div>
           </div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-mono font-bold mb-6 leading-tight">
+
+          <h1 class="hidden md:block text-4xl md:text-5xl lg:text-6xl font-mono font-bold mb-6 leading-tight">
             Building <br />
             <span class="text-primary dark:text-primary-foreground relative">
               <span class="wrap">{text}</span>
