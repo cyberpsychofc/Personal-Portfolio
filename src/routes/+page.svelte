@@ -302,36 +302,9 @@ let activeSection = 'home';
     </header>
   
     <!-- Hero Section -->
-    <section id="home" class="pt-32 pb-20 md:pl-10 md:pt-40 md:pb-32 relative overflow-hidden">
+    <section id="home" class="pt-25 pb-20 md:pl-10 md:pt-40 md:pb-32 relative overflow-hidden">
       <div class="container mx-auto px-6 flex flex-col md:flex-row items-center relative z-10">
-        <div class="md:w-1/2 mb-12 md:mb-0">
-          <div class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-6">
-            Software Developer
-          </div>
-          <h1 class="text-4xl md:text-5xl lg:text-6xl font-mono font-bold mb-6 leading-tight">
-            Building <br /><span class="text-primary dark:text-primary-foreground relative"><span class="wrap">{text}</span><span class="absolute bottom-2 left-0 w-full h-3 bg-primary/20 dark:bg-primary/30 -z-10 rounded-lg "></span><br /></span> systems for the modern age
-          </h1>
-          <p class="text-2xl mb-2 text-black dark:text-white max-w-lg leading-relaxed">
-            Hi! I'm <b class="highlight text-shadow-2xs">Om Aryan</b></p>
-          <p class="text-base mb-8 bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-400 dark:bg-clip-text dark:text-transparent leading-relaxed pt-3">
-            A Passionate programmer with a love for challenges and problem-solving in building solutions. Skilled in Java and Python always eager to expand my knowledge and skills in Deep Learning and Software Development.
-          </p>
-          <div class="flex flex-wrap gap-4">
-            <a 
-              href="#contact" 
-              class="px-8 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg hover:translate-y-[-2px] font-medium"
-            >
-              Get in Touch
-            </a>
-            <a 
-              href="#projects" 
-              class="px-8 py-3 border-2 border-primary text-primary dark:text-primary-foreground rounded-full hover:bg-primary/10 transition-all duration-300 font-medium"
-            >
-              View Projects
-            </a>
-          </div>
-        </div>
-        <div class="md:w-1/2 flex justify-center">
+        <div class="md:w-1/2 flex justify-center order-1 md:order-2 mb-12 md:mb-0">
           <div class="relative">
             <div class="absolute inset-0 bg-gradient-to-br from-primary/20 to-emerald-500/20 rounded-full blur-3xl"></div>
             <div class="gradient-border relative rounded-full w-64 h-64 md:w-80 md:h-80 shadow-2xl">
@@ -343,17 +316,39 @@ let activeSection = 'home';
                 />
               </div>
             </div>
-            <!--
-            <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-white dark:bg-gray-800 rounded-full flex items-center justify-center shadow-lg">
-              <div class="text-center">
-                <div class="text-2xl font-bold text-primary">5+</div>
-                <div class="text-xs text-gray-600 dark:text-gray-400">Years Exp.</div>
-              </div>
-            </div>-->
+          </div>
+        </div>
+        <div class="md:w-1/2 order-2 md:order-1">
+          <div class="inline-block px-4 py-1 rounded-full bg-primary/10 text-primary dark:text-primary-foreground text-sm font-medium mb-6">
+            Software Developer
+          </div>
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-mono font-bold mb-6 leading-tight">
+            Building <br />
+            <span class="text-primary dark:text-primary-foreground relative">
+              <span class="wrap">{text}</span>
+              <span class="absolute bottom-2 left-0 w-full h-3 bg-primary/20 dark:bg-primary/30 -z-10 rounded-lg"></span>
+              <br />
+            </span>
+            systems for the modern age
+          </h1>
+          <p class="text-2xl mb-2 text-black dark:text-white max-w-lg leading-relaxed">
+            Hi! I'm <b class="highlight text-shadow-2xs">Om Aryan</b>
+          </p>
+          <p class="text-base mb-8 bg-gradient-to-bl from-gray-400 to-gray-700 bg-clip-text text-transparent text-shadow-md dark:text-shadow-lg dark:bg-gradient-to-bl dark:from-green-100 dark:to-green-400 dark:bg-clip-text dark:text-transparent leading-relaxed pt-3">
+            A Passionate programmer with a love for challenges and problem-solving in building solutions. Skilled in Java and Python always eager to expand my knowledge and skills in Deep Learning and Software Development.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="#contact" class="px-8 py-3 bg-primary text-white rounded-full hover:bg-primary/90 transition-all duration-300 shadow-md hover:shadow-lg hover:translate-y-[-2px] font-medium">
+              Get in Touch
+            </a>
+            <a href="#projects" class="px-8 py-3 border-2 border-primary text-primary dark:text-primary-foreground rounded-full hover:bg-primary/10 transition-all duration-300 font-medium">
+              View Projects
+            </a>
           </div>
         </div>
       </div>
-    </section>
+      </section>
+
   
     <!-- Skills Section -->
     <section id="skills" class="py-20 relative">
