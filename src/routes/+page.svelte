@@ -87,9 +87,9 @@ const experiences = [
     logo: 'IITB_Logo.svg',
     company: 'IIT Bombay',
     position: 'Research Intern',
-    period: 'October 2024 - Present',
-    description: 'Engineered a backend system for "Predict Xplore Tool" from scratch, enabling seamless user registration and secure OTP authentication. Incorporated multiple ML/DL like YOLO and etc. inference support into the software.',
-    certificate: '' // add certificate filename when available
+    period: 'Dec 2024 - May 2025',
+    description: 'As a research intern I engineered as well as implemented a backend system for an ML deployment tool, enabling seamless user registration and authentication, along with AI models to support their inference within the software.',
+    certificate: 'cert.pdf'
     }
 ];
 
@@ -109,14 +109,13 @@ let github_user = "cyberpsychofc"
 
 let django_tiles = [
     "RedisSocketChat",
-    "LocomotiveDataAPI"
-    
+    "LocomotiveDataAPI",
+    "Bio-Insight-Pro"
   ];
 
 let spring_tiles = [
-    "Spring-Guides-Apps",
     "logauth",
-    "Mini-Search-Engine"
+    "Mini-Search-Engine",
 ];
 
 let lg_tiles = [
@@ -310,7 +309,7 @@ let activeSection = 'home';
             <div class="gradient-border relative rounded-full w-64 h-64 md:w-80 md:h-80 shadow-2xl">
               <div class="overflow-hidden rounded-full w-full h-full">
                 <img
-                  src="/sudo2.jpg?height=600&width=600"
+                  src="/sudo.jpg?height=600&width=600"
                   alt="Om Aryan"
                   class="w-full h-full object-cover"
                 />
@@ -465,7 +464,7 @@ let activeSection = 'home';
                 <div class="flex items-center mb-4 md:mb-2 justify-between">
                   <h3 class="text-xl font-bold text-shadow-2xs dark:text-shadow-2xs">{experience.position}</h3>
                   <a href="./{experience.certificate}" target="_blank">
-                  <img src="cert.svg" alt="experience certificate" class="w-10 h-10 mr-5 ml-3 shadow:lg transition-shadow duration-100 hover:drop-shadow-[0_0_12px_#00dc82] dark:hover:drop-shadow-[0_0_12px_#00dc82] hidden" />
+                  <img src="cert.svg" alt="experience certificate" class="w-10 h-10 mr-5 ml-3 shadow:lg transition-shadow duration-100 hover:drop-shadow-[0_0_12px_#00dc82] dark:hover:drop-shadow-[0_0_12px_#00dc82]" />
                   </a>
                 </div>
                 <div class="flex items-center mb-4">
